@@ -111,6 +111,12 @@
 
             <!-- Ações Direita (Carrinho Futuro + Botão Painel Admin + Menu Mobile) -->
             <div class="flex items-center gap-3">
+                <!-- Botão de Compartilhamento WhatsApp -->
+                <button onclick="shareViaWhatsApp()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded bg-wm-card border border-wm-border hover:border-emerald-500 text-xs font-semibold text-gray-300 hover:text-white transition" title="Compartilhar site via WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                    <span>Compartilhar</span>
+                </button>
+
                 <!-- Botão Prévia de Carrinho / Estoque Futuro -->
                 <button onclick="openCartModal()" class="relative p-2.5 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white hover:border-wm-red transition" title="Lista de Interesse / Futuro Carrinho">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -1364,9 +1370,14 @@
                     <p class="mb-3 leading-relaxed">
                         Projeto estruturado para evolução em etapas (Gestão de Oficina, Caixa, Estoque e Loja Virtual).
                     </p>
-                    <button onclick="switchMode('erp')" class="px-4 py-2 rounded bg-wm-card border border-wm-border hover:border-wm-red text-white font-semibold transition inline-flex items-center gap-2">
-                        <i class="fa-solid fa-table-columns text-wm-red"></i> Abrir Prévia do Painel Admin
-                    </button>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="switchMode('erp')" class="px-4 py-2 rounded bg-wm-card border border-wm-border hover:border-wm-red text-white font-semibold transition inline-flex items-center gap-2">
+                            <i class="fa-solid fa-table-columns text-wm-red"></i> Abrir Prévia do Painel Admin
+                        </button>
+                        <button onclick="shareViaWhatsApp()" class="px-4 py-2 rounded bg-emerald-950/60 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 font-semibold transition inline-flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i> Compartilhar Site no WhatsApp
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -2164,6 +2175,12 @@
             const msg = `Olá WM MOTOS! Gostaria de cotar a disponibilidade das seguintes peças:\n${lines}`;
             closeCartModal();
             openWhatsAppModal(msg);
+        }
+
+        function shareViaWhatsApp() {
+            const siteUrl = window.location.href;
+            const description = `Conheça a WM MOTOS, oficina especializada em motocicletas com estrutura moderna, serviços de qualidade e peças. Acesse e confira: ${siteUrl}`;
+            openWhatsAppModal(description);
         }
 
         /* =========================================================================
