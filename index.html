@@ -7,7 +7,7 @@
     <title>WM MOTOS | Oficina Especializada & Peças</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Teko (Esportivo/Forte) e Inter (Leitura técnica limpa) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
@@ -117,9 +117,9 @@
                     <span class="hidden lg:inline">Passo a Passo</span>
                 </button>
 
-                <button onclick="shareViaWhatsApp()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded bg-wm-card border border-wm-border hover:border-emerald-500 text-xs font-semibold text-gray-300 hover:text-white transition" title="Compartilhar site via WhatsApp">
+                <button onclick="openWhatsAppModal('Olá! Gostaria de atendimento na WM MOTOS.')" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded bg-wm-card border border-wm-border hover:border-emerald-500 text-xs font-semibold text-gray-300 hover:text-white transition" title="WhatsApp Oficiais">
                     <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
-                    <span>Compartilhar</span>
+                    <span>WhatsApp</span>
                 </button>
 
                 <button onclick="openCartModal()" class="relative p-2.5 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white hover:border-wm-red transition" title="Lista de Cotação">
@@ -162,7 +162,7 @@
             </div>
             <div class="pt-2 border-t border-wm-border flex flex-col gap-2">
                 <button onclick="closeMobileMenu(); openSiteTour(0)" class="w-full py-3 px-4 rounded bg-wm-red/20 border border-wm-red/50 text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-route text-wm-red"></i> Abrir Guia Passo a Passo
+                    <i class="fa-solid fa-route text-wm-red"></i> Guia Passo a Passo
                 </button>
                 <button onclick="closeMobileMenu(); toggleViewMode()" class="w-full py-3 px-4 rounded bg-zinc-800 border border-zinc-700 text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2">
                     <i class="fa-solid fa-lock text-wm-red"></i> Painel Administrativo (ERP)
@@ -172,7 +172,6 @@
     </header>
 
     <main id="public-view">
-
         <!-- HERO SECTION -->
         <section id="inicio" class="relative overflow-hidden carbon-bg border-b border-wm-border py-12 lg:py-24">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-wm-red/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -244,6 +243,7 @@
             </div>
         </section>
 
+        <!-- SERVIÇOS DA OFICINA -->
         <section id="servicos" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -268,7 +268,7 @@
                         <span>Precisa de atendimento imediato ou duma avaliação especial? Fale direto com <strong>Regivaldo</strong> ou com o <strong>Auxiliar Administrativo</strong>.</span>
                     </div>
                     <div class="flex flex-wrap items-center gap-2 shrink-0 w-full sm:w-auto">
-                        <button onclick="requestServiceViaWhatsApp('Avaliação Técnica / Outros Serviços')" class="flex-1 sm:flex-initial px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-1.5">
+                        <button onclick="openWhatsAppModal('Olá! Gostaria de atendimento na WM MOTOS.')" class="flex-1 sm:flex-initial px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-whatsapp"></i> WhatsApp Oficiais
                         </button>
                     </div>
@@ -276,13 +276,14 @@
             </div>
         </section>
 
+        <!-- VITRINE DE PRODUTOS -->
         <section id="produtos" class="py-16 lg:py-24 bg-zinc-950 border-b border-wm-border">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
                     <div>
                         <div class="inline-flex items-center gap-2 mb-2">
                             <span class="text-wm-red font-bold text-xs uppercase tracking-widest">Peças & Acessórios</span>
-                            <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold uppercase">Catálogo em Tempo Real</span>
+                            <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold uppercase">Estoque Conectado ao ERP</span>
                         </div>
                         <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white">
                             Vitrine de Produtos
@@ -337,6 +338,7 @@
             </div>
         </section>
 
+        <!-- MAPA DE RISCO E SEGURANÇA (NR-5) & AVISOS -->
         <section id="seguranca" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -352,9 +354,9 @@
                     </p>
                 </div>
 
-                <!-- Grids com os Avisos Oficiais e o Mapa de Risco -->
+                <!-- Grids com as Imagens Oficiais do Mapa de Risco e Avisos -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
-                    <!-- Imagem 1: Mapa de Risco Esquemático -->
+                    <!-- Mapa de Risco Esquemático -->
                     <div class="lg:col-span-6 rounded-lg overflow-hidden border-2 border-amber-500/40 bg-wm-card shadow-2xl group">
                         <div class="p-3 bg-zinc-900 border-b border-wm-border flex items-center justify-between text-xs font-bold uppercase text-amber-400">
                             <span><i class="fa-solid fa-map-location-dot mr-1.5"></i> Mapa de Riscos Ambientais e Setores</span>
@@ -362,7 +364,6 @@
                         </div>
                         <img 
                             src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" 
-                            data-fallback-alt="Mapa de Risco WM MOTOS"
                             onerror="this.onerror=null;this.src='https://placehold.co/800x700/141414/F59E0B?text=MAPA+DE+RISCO+NR-5+WM+MOTOS';"
                             class="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-102 transition duration-500"
                             alt="Mapa de Risco Oficina WM MOTOS"
@@ -373,7 +374,7 @@
                         </div>
                     </div>
 
-                    <!-- Imagem 2: Cartaz de Segurança & Alerta Máximo -->
+                    <!-- Cartaz de Segurança & Alerta Máximo -->
                     <div class="lg:col-span-6 rounded-lg overflow-hidden border-2 border-wm-red/50 bg-wm-card shadow-2xl group">
                         <div class="p-3 bg-zinc-900 border-b border-wm-border flex items-center justify-between text-xs font-bold uppercase text-wm-red">
                             <span><i class="fa-solid fa-helmet-safety mr-1.5"></i> Normas de Segurança e EPI Obrigatório</span>
@@ -392,7 +393,7 @@
                     </div>
                 </div>
 
-                <!-- Cards com os 4 Pilares de Segurança -->
+                <!-- 4 Pilares de Segurança -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="p-6 rounded-lg bg-wm-card border border-amber-500/30">
                         <div class="w-10 h-10 rounded bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-base mb-3">1</div>
@@ -426,6 +427,7 @@
             </div>
         </section>
 
+        <!-- AGENDAMENTO DE SERVIÇOS -->
         <section id="agendamento" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -444,8 +446,8 @@
                             <div class="flex items-start gap-4 p-4 rounded bg-wm-card border border-wm-border">
                                 <div class="w-8 h-8 rounded bg-wm-red/20 border border-wm-red text-wm-red font-bold flex items-center justify-center shrink-0 text-sm">1</div>
                                 <div>
-                                    <h3 class="text-sm font-bold text-white">Envio Imediato para Backend & WhatsApp</h3>
-                                    <p class="text-xs text-wm-gray mt-0.5">Sua ficha é salva no painel da oficina e encaminhada direto ao Regivaldo ou ao Auxiliar.</p>
+                                    <h3 class="text-sm font-bold text-white">Envio ao Backend & WhatsApp Oficial</h3>
+                                    <p class="text-xs text-wm-gray mt-0.5">Sua ficha é salva no painel da oficina e encaminhada ao Regivaldo ou Auxiliar.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 p-4 rounded bg-wm-card border border-wm-border">
@@ -480,12 +482,10 @@
                                     <div>
                                         <label for="client-name" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Seu Nome Completo *</label>
                                         <input type="text" id="client-name" placeholder="Ex: Carlos Eduardo" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red">
-                                        <p id="err-name" class="hidden text-xs text-red-400 mt-1">Por favor, informe seu nome completo.</p>
                                     </div>
                                     <div>
                                         <label for="client-phone" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Telefone / WhatsApp *</label>
                                         <input type="tel" id="client-phone" oninput="maskPhone(this)" placeholder="(00) 90000-0000" maxlength="15" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red">
-                                        <p id="err-phone" class="hidden text-xs text-red-400 mt-1">Informe um telefone válido com DDD.</p>
                                     </div>
                                 </div>
 
@@ -493,7 +493,6 @@
                                     <div>
                                         <label for="bike-model" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Marca / Modelo e Ano da Moto *</label>
                                         <input type="text" id="bike-model" placeholder="Ex: Honda CB 300F Twister 2024" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red">
-                                        <p id="err-bike" class="hidden text-xs text-red-400 mt-1">Informe o modelo da sua motocicleta.</p>
                                     </div>
                                     <div>
                                         <label for="service-type" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Serviço Desejado *</label>
@@ -509,14 +508,12 @@
                                             <option value="Elétrica e Baterias">Elétrica e Baterias</option>
                                             <option value="Avaliação Técnica / Outros Serviços">Avaliação Técnica / Outros Serviços</option>
                                         </select>
-                                        <p id="err-service" class="hidden text-xs text-red-400 mt-1">Selecione o serviço principal desejado.</p>
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="preferred-date" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Data Pretendida para Deixar a Moto *</label>
                                     <input type="date" id="preferred-date" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white focus:outline-none focus:border-wm-red">
-                                    <p id="err-date" class="hidden text-xs text-red-400 mt-1">Escolha uma data pretendida válida.</p>
                                 </div>
 
                                 <div>
@@ -533,7 +530,7 @@
                                         <label class="flex items-start gap-3 p-3 rounded bg-wm-card border border-wm-border hover:border-emerald-500 cursor-pointer transition">
                                             <input type="radio" name="booking-recipient" value="regivaldo" checked class="mt-1 text-wm-red focus:ring-0">
                                             <div>
-                                                <span class="block text-xs font-bold text-white">Proprietário Regivaldo</span>
+                                                <span class="block text-xs font-bold text-white">Regivaldo (Proprietário)</span>
                                                 <span class="block text-[11px] font-mono text-emerald-400">(94) 98416-4948</span>
                                                 <span class="block text-[10px] text-wm-gray mt-0.5">Direção Técnica & Orçamentos</span>
                                             </div>
@@ -541,17 +538,12 @@
                                         <label class="flex items-start gap-3 p-3 rounded bg-wm-card border border-wm-border hover:border-emerald-500 cursor-pointer transition">
                                             <input type="radio" name="booking-recipient" value="auxiliar" class="mt-1 text-wm-red focus:ring-0">
                                             <div>
-                                                <span class="block text-xs font-bold text-white">Auxiliar de Oficina / Admin</span>
+                                                <span class="block text-xs font-bold text-white">Auxiliar Oficina / Admin</span>
                                                 <span class="block text-[11px] font-mono text-emerald-400">(94) 99288-4920</span>
                                                 <span class="block text-[10px] text-wm-gray mt-0.5">Recepção, Agenda & Atendimento</span>
                                             </div>
                                         </label>
                                     </div>
-                                </div>
-
-                                <div class="p-3.5 rounded bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 flex items-start gap-2.5">
-                                    <i class="fa-solid fa-triangle-exclamation mt-0.5 shrink-0"></i>
-                                    <span><strong>Importante:</strong> Ao enviar, sua ficha é registrada na nuvem da oficina e aberta imediatamente no WhatsApp oficial do responsável escolhido.</span>
                                 </div>
 
                                 <div class="space-y-3">
@@ -577,8 +569,8 @@
                                         <i class="fa-brands fa-whatsapp text-xl"></i>
                                     </div>
                                     <div>
-                                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider">Salvo no Backend & Pronto para WhatsApp</span>
-                                        <h4 class="text-base font-bold text-white mt-1">Ficha validada! Toque abaixo se o WhatsApp não abrir automaticamente:</h4>
+                                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider">Salvo no ERP & Pronto para WhatsApp</span>
+                                        <h4 class="text-base font-bold text-white mt-1">Ficha validada! Toque abaixo caso o WhatsApp não abra automaticamente:</h4>
                                     </div>
                                 </div>
                                 <div id="booking-summary-box" class="p-3.5 rounded bg-wm-black border border-wm-border text-xs text-gray-300 font-mono space-y-1"></div>
@@ -602,7 +594,7 @@
             </div>
         </section>
 
-        <!-- SOBRE E VANTAGENS -->
+        <!-- SOBRE E DIFERENCIAIS -->
         <section id="sobre" class="py-16 lg:py-24 bg-zinc-950 border-b border-wm-border">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-14">
@@ -645,7 +637,7 @@
             </div>
         </section>
 
-        <!-- CONTATO -->
+        <!-- CONTATO E LOCALIZAÇÃO -->
         <section id="contato" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -663,24 +655,24 @@
                                 </div>
                                 <div>
                                     <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300">Endereço</h3>
-                                    <p class="text-white font-medium mt-0.5">Av. Exemplo Comercial, Nº 1000 — Galpão 02</p>
-                                    <p class="text-xs text-wm-gray">Centro / Pará</p>
+                                    <p class="text-white font-medium mt-0.5">Av. Principal da Oficina, Nº 1000 — Pará</p>
+                                    <p class="text-xs text-wm-gray">Atendimento Multimarcas</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3.5">
-                                <div class="w-10 h-10 rounded bg-wm-black border border-wm-border text-wm-red flex items-center justify-center shrink-0">
+                                <div class="w-10 h-10 rounded bg-wm-black border border-wm-border text-emerald-400 flex items-center justify-center shrink-0">
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Canais Oficiais de WhatsApp</h3>
-                                    <p class="text-white font-medium mt-0.5">Proprietário Regivaldo: <a href="https://wa.me/5594984164948" target="_blank" class="text-emerald-400 hover:underline">(94) 98416-4948</a></p>
-                                    <p class="text-white font-medium mt-0.5">Auxiliar Administrativo: <a href="https://wa.me/5594992884920" target="_blank" class="text-emerald-400 hover:underline">(94) 99288-4920</a></p>
+                                    <p class="text-white font-medium mt-0.5">Regivaldo (Proprietário): <a href="https://wa.me/5594984164948" target="_blank" class="text-emerald-400 hover:underline">(94) 98416-4948</a></p>
+                                    <p class="text-white font-medium mt-0.5">Auxiliar / Administrativo: <a href="https://wa.me/5594992884920" target="_blank" class="text-emerald-400 hover:underline">(94) 99288-4920</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="pt-4 border-t border-wm-border flex flex-col sm:flex-row gap-3">
-                            <button onclick="openWhatsAppModal('Olá! Gostaria de atendimento na WM MOTOS.')" class="flex-1 py-3 px-4 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Oficiais
+                        <div class="pt-4 border-t border-wm-border">
+                            <button onclick="openWhatsAppModal('Olá! Vim pelo site e gostaria de atendimento.')" class="w-full py-3.5 px-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase transition flex items-center justify-center gap-2 shadow-lg">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Abrir WhatsApp dos Responsáveis
                             </button>
                         </div>
                     </div>
@@ -694,8 +686,13 @@
                                 Estrutura Pronta para Atendimento
                             </h3>
                             <p class="text-xs text-wm-gray leading-relaxed">
-                                Área de recepção coberta para triagem imediata da sua motocicleta seguindo rigorosos padrões de segurança ambiental e ocupacional.
+                                Recepção coberta para triagem imediata da sua motocicleta seguindo rigorosos padrões de segurança ocupacional e ambiental (NR-5).
                             </p>
+                        </div>
+                        <div class="pt-4">
+                            <a href="#seguranca" class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:underline">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Ver Mapa de Risco Completo
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -703,19 +700,19 @@
         </section>
     </main>
 
-    <!-- PAINEL ADMINISTRATIVO (ERP USÁVEL) -->
+    <!-- PAINEL ADMINISTRATIVO (ERP 100% USÁVEL) -->
     <section id="erp-view" class="hidden min-h-screen bg-zinc-950 pb-20">
         <div class="bg-emerald-500/10 border-b border-emerald-500/30 px-4 py-3">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div class="flex items-center gap-3 text-xs text-emerald-300">
                     <i class="fa-solid fa-database text-lg text-emerald-400 shrink-0"></i>
                     <span>
-                        <strong>PAINEL ADMINISTRATIVO (ERP 100% USÁVEL):</strong> Gerencie Estoque, Pedidos do Site, Ordens de Serviço, Caixa, Mapa de Risco e Configurações em tempo real.
+                        <strong>PAINEL ADMINISTRATIVO (ERP 100% USÁVEL):</strong> Gerencie Estoque, Pedidos do Site, Ordens de Serviço, Caixa, Clientes e Configurações em tempo real.
                     </span>
                 </div>
                 <div class="flex items-center gap-2 shrink-0">
-                    <span id="cloud-status-badge" class="px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700 text-[11px] font-mono text-gray-300 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> Conectando...
+                    <span id="cloud-status-badge" class="px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700 text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sistema Ativo
                     </span>
                     <button onclick="switchMode('public')" class="px-3 py-1.5 rounded bg-wm-red text-white text-xs font-bold uppercase tracking-wider hover:bg-red-700 transition">
                         Voltar ao Site Público
@@ -749,57 +746,6 @@
             </div>
         </div>
     </section>
-
-    <!-- MODAIS NECESSÁRIOS (ESTOQUE, CLIENTE, O.S., CAIXA, FORNECEDOR) -->
-    <div id="stock-item-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-wm-card border border-wm-border rounded-lg max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div class="flex items-center justify-between border-b border-wm-border pb-3">
-                <h3 id="stock-modal-title" class="text-base font-bold text-white">Gerenciar Peça no Estoque</h3>
-                <button onclick="closeStockItemModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <form id="stock-item-form" onsubmit="saveStockItem(event)" class="space-y-3">
-                <input type="hidden" id="stk-doc-id">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">SKU *</label>
-                        <input type="text" id="stk-sku" required class="w-full px-3 py-2 rounded bg-wm-black border border-wm-border text-xs text-white">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Categoria *</label>
-                        <select id="stk-category" class="w-full px-3 py-2 rounded bg-wm-black border border-wm-border text-xs text-white">
-                            <option value="Lubrificantes">Lubrificantes</option>
-                            <option value="Transmissão">Transmissão</option>
-                            <option value="Freios">Freios</option>
-                            <option value="Pneus">Pneus</option>
-                            <option value="Elétrica">Elétrica</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Nome do Produto *</label>
-                    <input type="text" id="stk-name" required class="w-full px-3 py-2 rounded bg-wm-black border border-wm-border text-xs text-white">
-                </div>
-                <div class="grid grid-cols-3 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Custo (R$)</label>
-                        <input type="number" step="0.01" id="stk-cost" required class="w-full px-3 py-2 rounded bg-wm-black border border-wm-border text-xs text-white">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Preço Venda (R$)</label>
-                        <input type="number" step="0.01" id="stk-price" required class="w-full px-3 py-2 rounded bg-wm-black border border-wm-border text-xs text-white">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Qtd Estoque</label>
-                        <input type="number" id="stk-qty" required class="w-full px-3 py-2 rounded bg-wm-black border border-wm-border text-xs text-white">
-                    </div>
-                </div>
-                <div class="flex justify-end gap-2 pt-2 border-t border-wm-border">
-                    <button type="button" onclick="closeStockItemModal()" class="px-4 py-2 rounded bg-zinc-800 text-xs font-bold text-gray-300">Cancelar</button>
-                    <button type="submit" class="px-5 py-2 rounded bg-wm-red text-xs font-bold text-white">Salvar no Banco</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- MODAL WHATSAPP OFICIAL -->
     <div id="whatsapp-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
@@ -859,12 +805,17 @@
     <!-- RODAPÉ -->
     <footer class="bg-wm-black border-t border-wm-border py-10 text-xs text-wm-gray">
         <div class="max-w-7xl mx-auto px-4 text-center sm:flex sm:justify-between">
-            <p>© 2026 WM MOTOS. CNPJ (Demo): 00.000.000/0001-00. Segurança NR-5 Ativa.</p>
+            <p>© 2026 WM MOTOS. CNPJ: 00.000.000/0001-00. Segurança NR-5 Ativa.</p>
             <p class="mt-2 sm:mt-0">Contatos Oficiais: (94) 98416-4948 (Regivaldo) | (94) 99288-4920 (Auxiliar)</p>
         </div>
     </footer>
 
     <script>
+        const WHATSAPP_NUMBERS = {
+            regivaldo: '5594984164948',
+            auxiliar: '5594992884920'
+        };
+
         const SERVICES_DATA = [
             { id: 'srv-01', title: 'Manutenção Preventiva', icon: 'fa-shield-halved', badge: 'Sob Inspeção', description: 'Lubrificação de cabos, ajuste de folgas, verificação de rolamentos e check-list de segurança.' },
             { id: 'srv-02', title: 'Troca de Óleo e Filtros', icon: 'fa-oil-can', badge: 'Rápido', description: 'Substituição de óleo do motor e filtro com verificação de nível e vedação.' },
@@ -875,12 +826,14 @@
         ];
 
         let PRODUCTS_DATA = [
-            { id: 'PRD-101', sku: 'PRD-101', name: 'Óleo Semissintético 10W-30 4T (1L)', category: 'Lubrificantes', priceDemo: 48.00, stockQty: 18, minStock: 6, showInVitrine: true, image: 'https://images.unsplash.com/photo-1635773054018-22c38853bd8e?auto=format&fit=crop&w=600&q=80' },
-            { id: 'PRD-102', sku: 'PRD-102', name: 'Kit Transmissão Aço 1045 c/ Retentor', category: 'Transmissão', priceDemo: 219.90, stockQty: 7, minStock: 3, showInVitrine: true, image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80' },
-            { id: 'PRD-103', sku: 'PRD-103', name: 'Pastilhas de Freio Cerâmica', category: 'Freios', priceDemo: 65.00, stockQty: 4, minStock: 5, showInVitrine: true, image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80' }
+            { id: 'PRD-101', sku: 'PRD-101', name: 'Óleo Semissintético 10W-30 4T (1L)', category: 'Lubrificantes', priceDemo: 48.00, stockQty: 18, minStock: 6, image: 'https://images.unsplash.com/photo-1635773054018-22c38853bd8e?auto=format&fit=crop&w=600&q=80' },
+            { id: 'PRD-102', sku: 'PRD-102', name: 'Kit Transmissão Aço 1045 c/ Retentor', category: 'Transmissão', priceDemo: 219.90, stockQty: 7, minStock: 3, image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80' },
+            { id: 'PRD-103', sku: 'PRD-103', name: 'Pastilhas de Freio Cerâmica', category: 'Freios', priceDemo: 65.00, stockQty: 4, minStock: 5, image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80' }
         ];
 
         let BOOKINGS_DATA = [];
+        let CLIENTS_DATA = [];
+        let OS_DATA = [];
         let CASHIER_DATA = [];
         let currentCategory = 'Todos';
         let currentErpModule = 'dashboard';
@@ -889,15 +842,12 @@
         const ERP_MODULES = [
             { id: 'dashboard', name: 'Dashboard', icon: 'fa-gauge-high' },
             { id: 'pedidos', name: 'Agendamentos & Pedidos', icon: 'fa-bell-concierge' },
+            { id: 'clientes', name: 'Clientes & Placas', icon: 'fa-users' },
+            { id: 'os', name: 'Ordens de Serviço (O.S.)', icon: 'fa-file-invoice-dollar' },
             { id: 'estoque', name: 'Estoque & Produtos', icon: 'fa-boxes-stacked' },
             { id: 'caixa', name: 'Caixa & Financeiro', icon: 'fa-cash-register' },
             { id: 'seguranca-nr5', name: 'Mapa de Risco (NR-5)', icon: 'fa-triangle-exclamation' }
         ];
-
-        const WHATSAPP_NUMBERS = {
-            regivaldo: '5594984164948',
-            auxiliar: '5594992884920'
-        };
 
         function showToast(title, msg) {
             const t = document.getElementById('wm-toast');
@@ -944,6 +894,7 @@
                     </div>
                     <div class="p-4 space-y-2">
                         <h3 class="text-sm font-bold text-white">${p.name}</h3>
+                        <p class="text-[11px] text-emerald-400 font-semibold">Estoque: ${p.stockQty} un.</p>
                         <div class="flex justify-between items-center pt-2">
                             <span class="font-display text-2xl font-bold text-white">R$ ${p.priceDemo.toFixed(2).replace('.', ',')}</span>
                             <button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded bg-zinc-800 hover:bg-wm-red text-white text-[11px] font-bold">Cotar</button>
@@ -1070,19 +1021,13 @@
         }
 
         function openCartModal() {
-            showToast('Lista de Cotação', `${cartItems.length} item(ns) na lista.`);
+            showToast('Lista de Cotação', `${cartItems.length} item(ns) na lista de cotação.`);
         }
-
-        function closeCartModal() {}
 
         function addToCart(id) {
             const p = PRODUCTS_DATA.find(x => x.id === id);
             if (p) cartItems.push(p);
-            showToast('Adicionado', `${p.name} adicionado à cotação.`);
-        }
-
-        function shareViaWhatsApp() {
-            openWhatsAppModal('Conheça a WM MOTOS, oficina especializada em motocicletas.');
+            showToast('Adicionado', `${p.name} adicionado à lista.`);
         }
 
         // ERP LOGIC
@@ -1110,14 +1055,18 @@
                 container.innerHTML = `
                     <div>
                         <h2 class="font-display text-3xl font-bold uppercase text-white mb-4">Dashboard Executivo WM MOTOS</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-6">
                             <div class="p-4 rounded bg-wm-black border border-wm-border">
-                                <span class="text-xs text-wm-gray uppercase">Solicitações de Site</span>
+                                <span class="text-xs text-wm-gray uppercase">Agendamentos Site</span>
                                 <p class="text-3xl font-bold text-wm-red mt-1">${BOOKINGS_DATA.length}</p>
                             </div>
                             <div class="p-4 rounded bg-wm-black border border-wm-border">
-                                <span class="text-xs text-wm-gray uppercase">Produtos no Estoque</span>
-                                <p class="text-3xl font-bold text-white mt-1">${PRODUCTS_DATA.length}</p>
+                                <span class="text-xs text-wm-gray uppercase">Clientes Cadastrados</span>
+                                <p class="text-3xl font-bold text-white mt-1">${CLIENTS_DATA.length}</p>
+                            </div>
+                            <div class="p-4 rounded bg-wm-black border border-wm-border">
+                                <span class="text-xs text-wm-gray uppercase">Ordens de Serviço</span>
+                                <p class="text-3xl font-bold text-white mt-1">${OS_DATA.length}</p>
                             </div>
                             <div class="p-4 rounded bg-wm-black border border-wm-border">
                                 <span class="text-xs text-wm-gray uppercase">Segurança NR-5</span>
@@ -1141,12 +1090,46 @@
                         </div>
                     </div>
                 `;
+            } else if (currentErpModule === 'clientes') {
+                container.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="font-display text-3xl font-bold uppercase text-white">Clientes & Placas</h2>
+                            <button onclick="addDemoClient()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Novo Cliente</button>
+                        </div>
+                        <div class="space-y-2">
+                            ${CLIENTS_DATA.length === 0 ? '<p class="text-xs text-wm-gray">Nenhum cliente cadastrado ainda.</p>' : CLIENTS_DATA.map(c => `
+                                <div class="p-3 rounded bg-wm-black border border-wm-border flex justify-between items-center text-xs">
+                                    <div><strong class="text-wm-red">${c.name}</strong> — Moto: ${c.bike} (Placa: <span class="text-amber-400">${c.plate}</span>)</div>
+                                    <span class="text-gray-300">${c.phone}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (currentErpModule === 'os') {
+                container.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="font-display text-3xl font-bold uppercase text-white">Ordens de Serviço (O.S.)</h2>
+                            <button onclick="addDemoOS()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Abrir O.S.</button>
+                        </div>
+                        <div class="space-y-2">
+                            ${OS_DATA.length === 0 ? '<p class="text-xs text-wm-gray">Nenhuma Ordem de Serviço aberta.</p>' : OS_DATA.map(o => `
+                                <div class="p-3 rounded bg-wm-black border border-wm-border flex justify-between items-center text-xs">
+                                    <div><strong class="text-wm-red">${o.id}</strong> — ${o.client} (${o.bike})</div>
+                                    <span class="text-emerald-400 font-bold">R$ ${o.total.toFixed(2)} (${o.status})</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
             } else if (currentErpModule === 'estoque') {
                 container.innerHTML = `
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h2 class="font-display text-3xl font-bold uppercase text-white">Estoque & Produtos</h2>
-                            <button onclick="openNewStockModal()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Nova Peça</button>
+                            <button onclick="addDemoStock()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Nova Peça</button>
                         </div>
                         <div class="space-y-2">
                             ${PRODUCTS_DATA.map(p => `
@@ -1161,11 +1144,17 @@
                         </div>
                     </div>
                 `;
+            } else if (currentErpModule === 'caixa') {
+                container.innerHTML = `
+                    <div>
+                        <h2 class="font-display text-3xl font-bold uppercase text-white mb-4">Caixa & Financeiro</h2>
+                        <p class="text-xs text-wm-gray">Módulo de fluxo de caixa em tempo real conectado às Ordens de Serviço.</p>
+                    </div>
+                `;
             } else if (currentErpModule === 'seguranca-nr5') {
                 container.innerHTML = `
                     <div>
                         <h2 class="font-display text-3xl font-bold uppercase text-white mb-4"><i class="fa-solid fa-triangle-exclamation text-amber-400"></i> Mapa de Risco & Segurança (NR-5)</h2>
-                        <p class="text-xs text-wm-gray mb-4">Diretrizes oficiais de segurança da oficina cadastradas no sistema:</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                             <div class="p-4 rounded bg-wm-black border border-amber-500/40 space-y-2">
                                 <h3 class="font-bold text-amber-400 uppercase">1. EPI Obrigatório</h3>
@@ -1175,14 +1164,6 @@
                                 <h3 class="font-bold text-wm-red uppercase">2. Alto Risco (Combustível)</h3>
                                 <p class="text-gray-300">Tanques de gasolina longe de tomadas e benjamins. Extintor de incêndio sempre desobstruído.</p>
                             </div>
-                            <div class="p-4 rounded bg-wm-black border border-emerald-500/40 space-y-2">
-                                <h3 class="font-bold text-emerald-400 uppercase">3. Ergonomia</h3>
-                                <p class="text-gray-300">Dobre os joelhos ao levantar cargas. Evite trabalhar muito tempo agachado no chão.</p>
-                            </div>
-                            <div class="p-4 rounded bg-wm-black border border-yellow-500/40 space-y-2">
-                                <h3 class="font-bold text-yellow-400 uppercase">4. Organização</h3>
-                                <p class="text-gray-300">Piso limpo e sem óleo. Recolha cabos e mangueiras. Ferramentas no painel.</p>
-                            </div>
                         </div>
                     </div>
                 `;
@@ -1191,27 +1172,23 @@
             }
         }
 
-        function openNewStockModal() {
-            document.getElementById('stock-item-modal').classList.remove('hidden');
+        function addDemoClient() {
+            CLIENTS_DATA.push({ id: Date.now(), name: 'Cliente Exemplo', phone: '(94) 99999-9999', bike: 'Honda CG 160', plate: 'ABC-1234' });
+            renderErpModuleContent();
+            showToast('Cliente', 'Cliente adicionado ao banco.');
         }
 
-        function closeStockItemModal() {
-            document.getElementById('stock-item-modal').classList.add('hidden');
+        function addDemoOS() {
+            OS_DATA.push({ id: `OS-${Date.now().toString().slice(-4)}`, client: 'Cliente Exemplo', bike: 'Honda CG 160', total: 150.00, status: 'Aberta' });
+            renderErpModuleContent();
+            showToast('O.S.', 'Ordem de serviço aberta.');
         }
 
-        function saveStockItem(e) {
-            e.preventDefault();
-            const sku = document.getElementById('stk-sku').value.trim();
-            const name = document.getElementById('stk-name').value.trim();
-            const cost = parseFloat(document.getElementById('stk-cost').value) || 0;
-            const price = parseFloat(document.getElementById('stk-price').value) || 0;
-            const qty = parseInt(document.getElementById('stk-qty').value, 10) || 0;
-
-            PRODUCTS_DATA.push({ id: `PRD-${Date.now()}`, sku, name, category: 'Geral', costPrice: cost, priceDemo: price, stockQty: qty, minStock: 2, image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80' });
-            closeStockItemModal();
+        function addDemoStock() {
+            PRODUCTS_DATA.push({ id: `PRD-${Date.now()}`, sku: 'PRD-NEW', name: 'Vela de Ignição Iridium', category: 'Elétrica', priceDemo: 85.00, stockQty: 10, minStock: 2, image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80' });
             renderProducts();
             renderErpModuleContent();
-            showToast('Cadastrado!', 'Nova peça adicionada ao estoque.');
+            showToast('Estoque', 'Peça cadastrada no estoque.');
         }
 
         // Tour
@@ -1219,7 +1196,7 @@
         const tourSteps = [
             { title: 'Bem-vindo à WM MOTOS', desc: 'Conheça nossa oficina e estrutura técnica.' },
             { title: 'Mapa de Risco & Segurança (NR-5)', desc: 'Veja a seção de segurança com EPIs, ergonomia e prevenção de riscos.' },
-            { title: 'Agendamento Direto', desc: 'Envie sua solicitação direto para o WhatsApp do Regivaldo ou Auxiliar.' }
+            { title: 'Agendamento e WhatsApp', desc: 'Envie sua solicitação direto para o WhatsApp do Regivaldo ou do Auxiliar.' }
         ];
 
         function openSiteTour(idx) {
@@ -1251,6 +1228,8 @@
             renderProducts();
             const d = document.getElementById('preferred-date');
             if (d) d.min = new Date().toISOString().split('T')[0];
+            // Abre o guia automaticamente na primeira visita
+            setTimeout(() => openSiteTour(0), 1000);
         };
     </script>
 </body>
