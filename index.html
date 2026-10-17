@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
@@ -275,11 +276,16 @@
                 <div class="mt-10 p-4 rounded bg-wm-card border border-wm-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div class="flex items-center gap-3 text-sm text-gray-300">
                         <i class="fa-solid fa-circle-info text-wm-red text-lg shrink-0"></i>
-                        <span>Não encontrou o serviço específico que sua moto precisa? Solicite uma avaliação presencial com nossa equipe.</span>
+                        <span>Não encontrou o serviço específico que sua moto precisa? Solicite uma avaliação diretamente com <strong>Regivaldo</strong> ou com o <strong>Auxiliar Administrativo</strong>.</span>
                     </div>
-                    <button onclick="selectServiceAndScroll('Avaliação Técnica / Outros Serviços')" class="shrink-0 px-4 py-2 rounded bg-zinc-800 hover:bg-wm-red text-white text-xs font-bold uppercase tracking-wider transition">
-                        Solicitar Avaliação
-                    </button>
+                    <div class="flex flex-wrap items-center gap-2 shrink-0 w-full sm:w-auto">
+                        <button onclick="requestServiceViaWhatsApp('Avaliação Técnica / Outros Serviços')" class="flex-1 sm:flex-initial px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar no WhatsApp
+                        </button>
+                        <button onclick="selectServiceAndScroll('Avaliação Técnica / Outros Serviços')" class="flex-1 sm:flex-initial px-4 py-2 rounded bg-zinc-800 hover:bg-wm-red text-white text-xs font-bold uppercase tracking-wider transition">
+                            Pré-Agendar Avaliação
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -509,16 +515,41 @@
                                     ></textarea>
                                 </div>
 
+                                <!-- Escolha do Destinatário Oficial no WhatsApp -->
+                                <div class="p-4 rounded bg-wm-black border border-wm-border space-y-3">
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-emerald-400">
+                                        <i class="fa-brands fa-whatsapp mr-1"></i> Encaminhar Agendamento / Solicitação para: *
+                                    </label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <label class="flex items-start gap-3 p-3 rounded bg-wm-card border border-wm-border hover:border-emerald-500 cursor-pointer transition">
+                                            <input type="radio" name="booking-recipient" value="regivaldo" checked class="mt-1 text-wm-red focus:ring-0">
+                                            <div>
+                                                <span class="block text-xs font-bold text-white">Proprietário Regivaldo</span>
+                                                <span class="block text-[11px] font-mono text-emerald-400">(94) 98416-4948</span>
+                                                <span class="block text-[10px] text-wm-gray mt-0.5">Direção Técnica & Orçamentos</span>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-start gap-3 p-3 rounded bg-wm-card border border-wm-border hover:border-emerald-500 cursor-pointer transition">
+                                            <input type="radio" name="booking-recipient" value="auxiliar" class="mt-1 text-wm-red focus:ring-0">
+                                            <div>
+                                                <span class="block text-xs font-bold text-white">Auxiliar de Oficina / Admin</span>
+                                                <span class="block text-[11px] font-mono text-emerald-400">(94) 99288-4920</span>
+                                                <span class="block text-[10px] text-wm-gray mt-0.5">Recepção, Agenda & Atendimento</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <!-- Aviso Importante Antes do Envio -->
                                 <div class="p-3.5 rounded bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 flex items-start gap-2.5">
                                     <i class="fa-solid fa-triangle-exclamation mt-0.5 shrink-0"></i>
-                                    <span><strong>Importante:</strong> O envio deste formulário registra um <strong>pedido de agendamento</strong>. O horário só estará confirmado após verificação da agenda e confirmação da equipe WM MOTOS.</span>
+                                    <span><strong>Importante:</strong> O envio deste formulário registra um <strong>pedido de agendamento</strong> e encaminha os dados para o WhatsApp oficial selecionado. O horário só estará confirmado após retorno da equipe WM MOTOS.</span>
                                 </div>
 
                                 <!-- Botão de Envio -->
                                 <button type="submit" class="w-full py-4 px-6 rounded bg-wm-red hover:bg-wm-redDark text-white font-bold text-sm uppercase tracking-wider transition red-glow flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                    Enviar Pedido de Agendamento
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    Enviar e Encaminhar Pedido de Agendamento
                                 </button>
                             </form>
 
@@ -530,9 +561,9 @@
                                     </div>
                                     <div>
                                         <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider">Status: Aguardando Confirmação da Oficina</span>
-                                        <h4 class="text-base font-bold text-white mt-1">Pedido de agendamento registrado!</h4>
+                                        <h4 class="text-base font-bold text-white mt-1">Pedido de agendamento pronto para envio!</h4>
                                         <p class="text-xs text-gray-300 mt-1">
-                                            Recebemos os dados da sua solicitação. <strong>Atenção: seu horário ainda não está confirmado.</strong> Para agilizar o atendimento enquanto nosso sistema não está integrado ao banco de dados, envie o resumo abaixo para o WhatsApp da recepção:
+                                            <strong>Atenção: seu horário ainda não está confirmado.</strong> Caso a janela do WhatsApp não tenha aberto automaticamente no seu celular, clique em um dos dois contatos oficiais abaixo para encaminhar agora:
                                         </p>
                                     </div>
                                 </div>
@@ -541,13 +572,25 @@
                                     <!-- Preenchido via JS -->
                                 </div>
 
-                                <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                                    <button id="btn-whatsapp-booking" type="button" class="flex-1 py-3 px-4 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition">
-                                        <i class="fa-brands fa-whatsapp text-base"></i> Solicitar Confirmação no WhatsApp
-                                    </button>
-                                    <button onclick="resetBookingForm()" type="button" class="py-3 px-4 rounded bg-zinc-800 hover:bg-zinc-700 text-gray-200 text-xs font-bold uppercase tracking-wider transition">
-                                        Novo Pedido
-                                    </button>
+                                <div class="space-y-2 pt-2">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                                        <i class="fa-brands fa-whatsapp mr-1"></i> Canais Oficiais para Encaminhamento do Serviço:
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                        <a id="btn-wa-booking-regivaldo" href="https://wa.me/5594984164948" target="_blank" rel="noopener noreferrer" class="py-3 px-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition text-center shadow">
+                                            <i class="fa-brands fa-whatsapp text-base"></i>
+                                            <span>Proprietário Regivaldo (94) 98416-4948</span>
+                                        </a>
+                                        <a id="btn-wa-booking-auxiliar" href="https://wa.me/5594992884920" target="_blank" rel="noopener noreferrer" class="py-3 px-4 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition text-center shadow">
+                                            <i class="fa-brands fa-whatsapp text-base"></i>
+                                            <span>Auxiliar / Admin (94) 99288-4920</span>
+                                        </a>
+                                    </div>
+                                    <div class="pt-1 flex justify-end">
+                                        <button onclick="resetBookingForm()" type="button" class="py-2 px-4 rounded bg-zinc-800 hover:bg-zinc-700 text-gray-200 text-xs font-bold uppercase tracking-wider transition">
+                                            Novo Pedido
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -746,16 +789,16 @@
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300">Canais de Contato (Demonstrativo)</h3>
-                                    <p class="text-white font-medium mt-0.5">WhatsApp Recepção: (00) 90000-0000</p>
-                                    <p class="text-xs text-wm-gray">E-mail: atendimento@wmmotos-demo.com.br</p>
+                                    <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Canais Oficiais de WhatsApp</h3>
+                                    <p class="text-white font-medium mt-0.5">Proprietário Regivaldo: <a href="https://wa.me/5594984164948" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">(94) 98416-4948</a></p>
+                                    <p class="text-white font-medium mt-0.5">Auxiliar de Oficina / Admin: <a href="https://wa.me/5594992884920" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">(94) 99288-4920</a></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="pt-4 border-t border-wm-border flex flex-col sm:flex-row gap-3">
-                            <button onclick="openWhatsAppModal('Olá! Gostaria de confirmar a localização e horário de atendimento da WM MOTOS.')" class="flex-1 py-3 px-4 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp text-base"></i> Chamar na Recepção
+                            <button onclick="openWhatsAppModal('Olá! Gostaria de atendimento e informações sobre serviços na WM MOTOS.')" class="flex-1 py-3 px-4 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-base"></i> Falar com Regivaldo / Admin
                             </button>
                             <a href="#agendamento" class="flex-1 py-3 px-4 rounded bg-wm-black hover:bg-zinc-800 border border-wm-border text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 text-center">
                                 <i class="fa-regular fa-calendar-check text-wm-red"></i> Pré-Agendar Horário
@@ -1405,28 +1448,39 @@
             <div class="flex items-center justify-between border-b border-wm-border pb-3">
                 <div class="flex items-center gap-2">
                     <i class="fa-brands fa-whatsapp text-emerald-500 text-xl"></i>
-                    <h3 class="text-base font-bold text-white">Direcionamento para WhatsApp</h3>
+                    <h3 class="text-base font-bold text-white">Central de Atendimento WhatsApp</h3>
                 </div>
                 <button onclick="closeWhatsAppModal()" class="text-gray-400 hover:text-white">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <div class="p-3 rounded bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300">
-                <strong>Ambiente de Demonstração:</strong> Como o telefone real da oficina ainda não foi parametrizado, confira abaixo a mensagem automática gerada que será enviada para a recepção da WM MOTOS:
+            <div class="p-3 rounded bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300">
+                Escolha abaixo para qual setor da <strong>WM MOTOS</strong> deseja encaminhar sua solicitação ou edite a mensagem se necessário:
             </div>
 
             <div>
                 <label class="block text-[11px] font-bold uppercase text-wm-gray mb-1">Mensagem Preparada:</label>
-                <textarea id="wa-modal-message" rows="4" class="w-full p-3 rounded bg-wm-black border border-wm-border text-xs text-gray-200 focus:outline-none focus:border-wm-red"></textarea>
+                <textarea id="wa-modal-message" oninput="updateWhatsAppModalLinks()" rows="4" class="w-full p-3 rounded bg-wm-black border border-wm-border text-xs text-gray-200 focus:outline-none focus:border-wm-red"></textarea>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-2 pt-2">
-                <button onclick="copyWhatsAppMessage()" class="flex-1 py-2.5 px-4 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
+            <div id="wa-direct-contacts" class="space-y-2 pt-1">
+                <a id="wa-link-regivaldo" href="#" target="_blank" rel="noopener noreferrer" onclick="closeWhatsAppModal()" class="w-full py-2.5 px-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-between">
+                    <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-base"></i> Proprietário Regivaldo</span>
+                    <span class="font-mono text-[11px] bg-black/25 px-2 py-0.5 rounded">(94) 98416-4948</span>
+                </a>
+                <a id="wa-link-auxiliar" href="#" target="_blank" rel="noopener noreferrer" onclick="closeWhatsAppModal()" class="w-full py-2.5 px-4 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-between">
+                    <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-base"></i> Auxiliar de Oficina / Admin</span>
+                    <span class="font-mono text-[11px] bg-black/25 px-2 py-0.5 rounded">(94) 99288-4920</span>
+                </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2 pt-2 border-t border-wm-border">
+                <button onclick="copyWhatsAppMessage()" class="flex-1 py-2 px-4 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
                     <i class="fa-regular fa-copy"></i> <span id="copy-wa-text">Copiar Mensagem</span>
                 </button>
-                <a id="wa-external-link" href="#" target="_blank" rel="noopener noreferrer" onclick="closeWhatsAppModal()" class="flex-1 py-2.5 px-4 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 text-center">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir WhatsApp
+                <a id="wa-external-link" href="#" target="_blank" rel="noopener noreferrer" onclick="closeWhatsAppModal()" class="py-2 px-4 rounded bg-wm-black hover:bg-zinc-900 border border-wm-border text-gray-300 text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 text-center" title="Compartilhar com outro contato">
+                    <i class="fa-solid fa-share-nodes"></i> Outro Contato
                 </a>
             </div>
         </div>
@@ -1908,8 +1962,21 @@
         ];
 
         /* =========================================================================
-           4. ESTADO DA APLICAÇÃO
+           4. ESTADO DA APLICAÇÃO E CONTATOS OFICIAIS
            ========================================================================= */
+        const WM_WHATSAPP_CONTACTS = {
+            regivaldo: {
+                name: 'Proprietário Regivaldo',
+                phone: '5594984164948',
+                display: '(94) 98416-4948'
+            },
+            auxiliar: {
+                name: 'Auxiliar de Oficina / Administrativo',
+                phone: '5594992884920',
+                display: '(94) 99288-4920'
+            }
+        };
+
         let currentCategory = 'Todos';
         let cartItems = [];
         let currentErpModule = 'ordens-servico';
@@ -1992,6 +2059,11 @@
             if (section) section.scrollIntoView({ behavior: 'smooth' });
         }
 
+        function requestServiceViaWhatsApp(serviceName) {
+            const msg = `Olá WM MOTOS! Gostaria de fazer uma *Solicitação de Serviço*:\n- Serviço de interesse: *${serviceName}*\n- Modelo da minha moto: \n- Observações / Sintomas: \n\nAguardo retorno para agendarmos o atendimento!`;
+            openWhatsAppModal(msg);
+        }
+
         function maskPhone(input) {
             let v = input.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
@@ -2002,6 +2074,75 @@
             } else if (v.length > 0) {
                 input.value = `(${v}`;
             }
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const bike = document.getElementById('bike-model').value.trim();
+            const service = document.getElementById('service-type').value.trim();
+            const date = document.getElementById('preferred-date').value.trim();
+            const notes = document.getElementById('booking-notes').value.trim();
+            const recipientRadio = document.querySelector('input[name="booking-recipient"]:checked');
+            const recipientKey = recipientRadio ? recipientRadio.value : 'regivaldo';
+
+            let valid = true;
+            const showErr = (id, show) => {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('hidden', !show);
+            };
+
+            showErr('err-name', name.length < 3);
+            if (name.length < 3) valid = false;
+
+            showErr('err-phone', phone.replace(/\D/g, '').length < 10);
+            if (phone.replace(/\D/g, '').length < 10) valid = false;
+
+            showErr('err-bike', bike.length < 2);
+            if (bike.length < 2) valid = false;
+
+            showErr('err-service', !service);
+            if (!service) valid = false;
+
+            showErr('err-date', !date);
+            if (!date) valid = false;
+
+            if (!valid) return;
+
+            const formattedDate = date.split('-').reverse().join('/');
+            const targetContact = WM_WHATSAPP_CONTACTS[recipientKey] || WM_WHATSAPP_CONTACTS.regivaldo;
+
+            const summaryBox = document.getElementById('booking-summary-box');
+            if (summaryBox) {
+                summaryBox.innerHTML = `
+                    <div><strong>Cliente:</strong> ${name} (${phone})</div>
+                    <div><strong>Motocicleta:</strong> ${bike}</div>
+                    <div><strong>Serviço Solicitado:</strong> ${service}</div>
+                    <div><strong>Data Pretendida:</strong> ${formattedDate} (Sujeito a confirmação)</div>
+                    <div><strong>Destinatário Selecionado:</strong> ${targetContact.name} (${targetContact.display})</div>
+                    ${notes ? `<div><strong>Observações:</strong> ${notes}</div>` : ''}
+                `;
+            }
+
+            const waMessage = `Olá WM MOTOS! Fiz uma solicitação de agendamento de serviço pelo site:\n- *Cliente:* ${name}\n- *Telefone:* ${phone}\n- *Moto:* ${bike}\n- *Serviço:* ${service}\n- *Data pretendida:* ${formattedDate}\n${notes ? `- *Obs:* ${notes}\n` : ''}\nAguardo a confirmação de disponibilidade na agenda!`;
+            const encodedMsg = encodeURIComponent(waMessage);
+
+            const urlRegivaldo = `https://wa.me/${WM_WHATSAPP_CONTACTS.regivaldo.phone}?text=${encodedMsg}`;
+            const urlAuxiliar = `https://wa.me/${WM_WHATSAPP_CONTACTS.auxiliar.phone}?text=${encodedMsg}`;
+
+            const btnRegivaldo = document.getElementById('btn-wa-booking-regivaldo');
+            const btnAuxiliar = document.getElementById('btn-wa-booking-auxiliar');
+
+            if (btnRegivaldo) btnRegivaldo.href = urlRegivaldo;
+            if (btnAuxiliar) btnAuxiliar.href = urlAuxiliar;
+
+            document.getElementById('booking-feedback').classList.remove('hidden');
+
+            // Encaminha imediatamente para o contato selecionado (Regivaldo ou Auxiliar)
+            const targetUrl = recipientKey === 'auxiliar' ? urlAuxiliar : urlRegivaldo;
+            window.open(targetUrl, '_blank', 'noopener,noreferrer');
+        }
         }
 
         function handleBookingSubmit(event) {
@@ -2048,10 +2189,17 @@
                 `;
             }
 
-            const waMessage = `Olá WM MOTOS! Solicitei um pré-agendamento pelo site:\n- Nome: ${name}\n- Telefone: ${phone}\n- Moto: ${bike}\n- Serviço: ${service}\n- Data pretendida: ${formattedDate}\n${notes ? `- Obs: ${notes}\n` : ''}Aguardo confirmação de disponibilidade na agenda!`;
-            const btnWa = document.getElementById('btn-whatsapp-booking');
-            if (btnWa) {
-                btnWa.onclick = () => openWhatsAppModal(waMessage);
+            const waMessage = `Olá WM MOTOS! Solicitei um agendamento/serviço pelo site:\n- Nome: ${name}\n- Telefone: ${phone}\n- Moto: ${bike}\n- Serviço: ${service}\n- Data pretendida: ${formattedDate}\n${notes ? `- Obs: ${notes}\n` : ''}Aguardo confirmação de disponibilidade na agenda!`;
+            const encodedMsg = encodeURIComponent(waMessage);
+
+            const btnRegivaldo = document.getElementById('btn-wa-booking-regivaldo');
+            const btnAuxiliar = document.getElementById('btn-wa-booking-auxiliar');
+
+            if (btnRegivaldo) {
+                btnRegivaldo.href = `https://wa.me/${WM_WHATSAPP_CONTACTS.regivaldo.phone}?text=${encodedMsg}`;
+            }
+            if (btnAuxiliar) {
+                btnAuxiliar.href = `https://wa.me/${WM_WHATSAPP_CONTACTS.auxiliar.phone}?text=${encodedMsg}`;
             }
 
             document.getElementById('booking-feedback').classList.remove('hidden');
@@ -2063,12 +2211,31 @@
             document.getElementById('booking-feedback').classList.add('hidden');
         }
 
+        function updateWhatsAppModalLinks() {
+            const textarea = document.getElementById('wa-modal-message');
+            const message = textarea ? textarea.value : '';
+            const encoded = encodeURIComponent(message);
+
+            const linkRegivaldo = document.getElementById('wa-link-regivaldo');
+            const linkAuxiliar = document.getElementById('wa-link-auxiliar');
+            const linkGeneric = document.getElementById('wa-external-link');
+
+            if (linkRegivaldo) {
+                linkRegivaldo.href = `https://wa.me/${WM_WHATSAPP_CONTACTS.regivaldo.phone}?text=${encoded}`;
+            }
+            if (linkAuxiliar) {
+                linkAuxiliar.href = `https://wa.me/${WM_WHATSAPP_CONTACTS.auxiliar.phone}?text=${encoded}`;
+            }
+            if (linkGeneric) {
+                linkGeneric.href = `https://wa.me/?text=${encoded}`;
+            }
+        }
+
         function openWhatsAppModal(message) {
             const modal = document.getElementById('whatsapp-modal');
             const textarea = document.getElementById('wa-modal-message');
-            const link = document.getElementById('wa-external-link');
             if (textarea) textarea.value = message;
-            if (link) link.href = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            updateWhatsAppModalLinks();
             if (modal) modal.classList.remove('hidden');
         }
 
@@ -2204,13 +2371,22 @@
                         <h3 class="text-lg font-bold text-white mb-2">${srv.title}</h3>
                         <p class="text-xs text-wm-gray leading-relaxed mb-6">${srv.description}</p>
                     </div>
-                    <button 
-                        onclick="selectServiceAndScroll('${srv.selectValue}')" 
-                        class="w-full py-2.5 px-4 rounded bg-wm-black hover:bg-wm-red border border-wm-border hover:border-wm-red text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
-                    >
-                        <span>Solicitar este serviço</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                    <div class="space-y-2">
+                        <button 
+                            onclick="selectServiceAndScroll('${srv.selectValue}')" 
+                            class="w-full py-2.5 px-4 rounded bg-wm-red hover:bg-wm-redDark text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+                        >
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Agendar este serviço</span>
+                        </button>
+                        <button 
+                            onclick="requestServiceViaWhatsApp('${srv.selectValue}')" 
+                            class="w-full py-2 px-4 rounded bg-wm-black hover:bg-emerald-700 border border-wm-border hover:border-emerald-500 text-gray-200 hover:text-white text-[11px] font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+                        >
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Solicitar no WhatsApp</span>
+                        </button>
+                    </div>
                 </article>
             `).join('');
         }
@@ -3973,3 +4149,4 @@
     </script>
 </body>
 </html>
+```
