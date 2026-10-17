@@ -1,36 +1,38 @@
 ```html
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WM MOTOS | Oficina Especializada & Peças</title>
+    <title>WM MOTOS — Centro Técnico & Peças</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter & Russo One for the bold automotive header style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        wm: {
-                            red: '#DC2626',
-                            redDark: '#991B1B',
-                            black: '#0A0A0A',
-                            card: '#141414',
-                            border: '#262626',
-                            gray: '#A3A3A3'
-                        }
-                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Teko', 'sans-serif'],
+                        display: ['Russo One', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#dc2626',
+                            darkRed: '#991b1b',
+                            green: '#10b981',
+                            darkGreen: '#059669',
+                            card: '#121212',
+                            border: '#262626',
+                            bg: '#09090b'
+                        }
                     }
                 }
             }
@@ -39,1197 +41,580 @@
 
     <style>
         body {
-            background-color: #0A0A0A;
-            color: #FFFFFF;
+            background-color: #09090b;
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-        .carbon-bg {
-            background-color: #0a0a0a;
-            background-image: radial-gradient(#1f1f1f 1px, transparent 1px), radial-gradient(#1f1f1f 1px, #0a0a0a 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+        .font-display-italic {
+            font-family: 'Russo One', sans-serif;
+            letter-spacing: 0.03em;
         }
-        .red-glow:hover {
-            box-shadow: 0 0 25px rgba(220, 38, 38, 0.35);
-        }
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0A0A0A;
+            background: #121212;
         }
         ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 4px;
+            background: #dc2626;
+            border-radius: 3px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #DC2626;
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        .animate-whatsapp {
+            animation: pulse-subtle 2.5s infinite ease-in-out;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-wm-red selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-red-600 selection:text-white pb-20">
 
-    <!-- AVISO DE AMBIENTE DE DEMONSTRAÇÃO -->
-    <div class="bg-wm-red/15 border-b border-wm-red/40 text-xs text-gray-200 py-2 px-4 text-center">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
-            <span class="inline-flex items-center gap-1.5 font-semibold text-red-400 uppercase tracking-wider">
-                <i class="fa-solid fa-flask"></i> Versão 1.0 (Ambiente Demonstrativo)
-            </span>
-            <span class="hidden sm:inline text-gray-500">|</span>
-            <span>Preços, endereços, telefones e estoques exibidos são dados de exemplo para validação visual e estrutural.</span>
-        </div>
-    </div>
-
-    <!-- CABEÇALHO PRINCIPAL -->
-    <header class="sticky top-0 z-40 bg-wm-black/95 backdrop-blur-md border-b border-wm-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#inicio" onclick="switchMode('public')" class="flex items-center gap-3 group focus:outline-none">
-                <div class="w-11 h-11 rounded bg-wm-red flex items-center justify-center text-white shadow-lg shadow-wm-red/30 group-hover:bg-red-700 transition">
-                    <i class="fa-solid fa-motorcycle text-xl"></i>
+    <header class="sticky top-0 z-40 bg-[#0d0d0f]/95 backdrop-blur-md border-b border-neutral-800/80 px-3 py-2.5">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center gap-2.5">
+                <a href="#" class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg shadow-red-600/20 shrink-0 border border-red-500/30">
+                    <i class="fa-solid fa-motorcycle text-white text-lg"></i>
+                </a>
+                <div class="leading-tight">
+                    <div class="flex items-center gap-1">
+                        <span class="font-display text-red-600 text-lg sm:text-xl tracking-wider">WM MOTOS</span>
+                    </div>
+                    <p class="text-[10px] sm:text-xs font-semibold tracking-widest text-neutral-400 uppercase leading-none">
+                        CENTRO TÉCNICO & PEÇAS
+                    </p>
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-display text-3xl font-bold tracking-wider leading-none text-white">
-                        WM <span class="text-wm-red">MOTOS</span>
-                    </span>
-                    <span class="text-[10px] uppercase tracking-widest text-wm-gray font-semibold">
-                        Centro Técnico & Peças
-                    </span>
-                </div>
-            </a>
-
-            <!-- Menu Desktop -->
-            <nav id="public-nav" class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
-                <a href="#inicio" class="hover:text-wm-red transition py-2">Início</a>
-                <a href="#servicos" class="hover:text-wm-red transition py-2">Serviços</a>
-                <a href="#produtos" class="hover:text-wm-red transition py-2">Produtos</a>
-                <a href="#seguranca" class="hover:text-amber-400 transition py-2 flex items-center gap-1">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-400 text-xs"></i> Segurança (NR-5)
-                </a>
-                <a href="#agendamento" class="hover:text-wm-red transition py-2">Agendar</a>
-                <a href="#sobre" class="hover:text-wm-red transition py-2">Sobre</a>
-                <a href="#contato" class="hover:text-wm-red transition py-2">Contato</a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <button onclick="openSiteTour(0)" class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-wm-red/15 border border-wm-red/50 hover:bg-wm-red text-xs font-bold text-white transition" title="Ver Passo a Passo de Como Usar o Site">
-                    <i class="fa-solid fa-route text-wm-red group-hover:text-white"></i>
-                    <span class="hidden lg:inline">Passo a Passo</span>
-                </button>
-
-                <button onclick="openWhatsAppModal('Olá! Gostaria de atendimento na WM MOTOS.')" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded bg-wm-card border border-wm-border hover:border-emerald-500 text-xs font-semibold text-gray-300 hover:text-white transition" title="WhatsApp Oficiais">
-                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
-                    <span>WhatsApp</span>
-                </button>
-
-                <button onclick="openCartModal()" class="relative p-2.5 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white hover:border-wm-red transition" title="Lista de Cotação">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-wm-red text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                </button>
-
-                <button id="toggle-erp-btn" onclick="toggleViewMode()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded bg-wm-red hover:bg-wm-redDark border border-red-400/40 text-xs font-bold uppercase tracking-wider text-white transition shadow-lg shadow-wm-red/20">
-                    <i class="fa-solid fa-gauge-high"></i>
-                    <span id="toggle-erp-text">Painel Admin (ERP)</span>
-                </button>
-
-                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded bg-wm-card border border-wm-border text-gray-200 hover:text-wm-red focus:outline-none" aria-label="Abrir Menu">
-                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
-                </button>
             </div>
-        </div>
 
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-wm-card border-b border-wm-border px-4 pt-3 pb-6 space-y-3">
-            <div class="grid grid-cols-2 gap-2">
-                <a href="#inicio" onclick="closeMobileMenu(); switchMode('public')" class="flex items-center gap-2 p-3 rounded bg-wm-black border border-wm-border text-sm font-medium text-white">
-                    <i class="fa-solid fa-house text-wm-red w-5"></i> Início
+            <!-- Action Controls (Route Link, Cart, ERP Admin) -->
+            <div class="flex items-center gap-2">
+                <!-- Direct Google Maps Route Button in Header -->
+                <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" target="_blank" rel="noopener noreferrer" 
+                   title="Abrir localização no Google Maps"
+                   class="w-10 h-10 rounded-xl bg-red-950/40 hover:bg-red-900/50 border border-red-800/50 flex items-center justify-center text-red-500 transition active:scale-95">
+                    <i class="fa-solid fa-route text-sm"></i>
                 </a>
-                <a href="#servicos" onclick="closeMobileMenu(); switchMode('public')" class="flex items-center gap-2 p-3 rounded bg-wm-black border border-wm-border text-sm font-medium text-white">
-                    <i class="fa-solid fa-wrench text-wm-red w-5"></i> Serviços
-                </a>
-                <a href="#produtos" onclick="closeMobileMenu(); switchMode('public')" class="flex items-center gap-2 p-3 rounded bg-wm-black border border-wm-border text-sm font-medium text-white">
-                    <i class="fa-solid fa-box-open text-wm-red w-5"></i> Produtos
-                </a>
-                <a href="#seguranca" onclick="closeMobileMenu(); switchMode('public')" class="flex items-center gap-2 p-3 rounded bg-wm-black border border-amber-500 text-sm font-medium text-amber-300">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-400 w-5"></i> Segurança (NR-5)
-                </a>
-                <a href="#agendamento" onclick="closeMobileMenu(); switchMode('public')" class="flex items-center gap-2 p-3 rounded bg-wm-black border border-wm-border text-sm font-medium text-white">
-                    <i class="fa-regular fa-calendar-check text-wm-red w-5"></i> Agendar
-                </a>
-                <a href="#contato" onclick="closeMobileMenu(); switchMode('public')" class="flex items-center gap-2 p-3 rounded bg-wm-black border border-wm-border text-sm font-medium text-white">
-                    <i class="fa-solid fa-location-dot text-wm-red w-5"></i> Contato
-                </a>
-            </div>
-            <div class="pt-2 border-t border-wm-border flex flex-col gap-2">
-                <button onclick="closeMobileMenu(); openSiteTour(0)" class="w-full py-3 px-4 rounded bg-wm-red/20 border border-wm-red/50 text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-route text-wm-red"></i> Guia Passo a Passo
+
+                <!-- Shopping Cart Trigger -->
+                <button onclick="toggleCartModal()" 
+                        title="Carrinho de Peças e Serviços"
+                        class="relative w-10 h-10 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex items-center justify-center text-neutral-200 transition active:scale-95">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                    <span id="cartCountBadge" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-red-600 text-white text-[10px] font-bold flex items-center justify-center border-2 border-[#0d0d0f]">
+                        0
+                    </span>
                 </button>
-                <button onclick="closeMobileMenu(); toggleViewMode()" class="w-full py-3 px-4 rounded bg-zinc-800 border border-zinc-700 text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-lock text-wm-red"></i> Painel Administrativo (ERP)
+
+                <!-- Painel Admin (ERP) Button -->
+                <button onclick="toggleErpModal()" 
+                        class="px-3 py-2 rounded-xl bg-gradient-to-b from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-red-600/25 border border-red-500/40 transition active:scale-95">
+                    <i class="fa-solid fa-gauge-high text-xs"></i>
+                    <span class="text-left leading-tight">
+                        PAINEL<br class="sm:hidden"><span class="hidden sm:inline"> </span>ADMIN<br class="sm:hidden"><span class="hidden sm:inline"> </span>(ERP)
+                    </span>
                 </button>
             </div>
         </div>
     </header>
 
-    <main id="public-view">
-        <!-- HERO SECTION -->
-        <section id="inicio" class="relative overflow-hidden carbon-bg border-b border-wm-border py-12 lg:py-24">
-            <div class="absolute -top-24 -right-24 w-96 h-96 bg-wm-red/15 rounded-full blur-3xl pointer-events-none"></div>
+    <main class="max-w-5xl w-full mx-auto px-3 sm:px-6 pt-5 space-y-6">
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                    <div class="lg:col-span-7 space-y-6 text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-wm-red/10 border border-wm-red/30 text-wm-red text-xs font-bold uppercase tracking-widest">
-                            <span class="w-2 h-2 rounded-full bg-wm-red animate-pulse"></span>
-                            Oficina Mecânica & Peças Multimarcas
+        <!-- VISITE A WM MOTOS - MAIN LOCATION CARD (Updated per user screenshot & instructions) -->
+        <section id="localizacao" class="bg-[#121214] border border-neutral-800/90 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+            <!-- Subtle decorative glow -->
+            <div class="absolute -top-24 -right-24 w-56 h-56 bg-red-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <p class="text-red-500 font-bold text-xs sm:text-sm tracking-[0.14em] uppercase mb-1.5">
+                LOCALIZAÇÃO & ATENDIMENTO
+            </p>
+            <h1 class="font-display text-3xl sm:text-4xl text-white uppercase tracking-wide leading-tight mb-6">
+                VISITE A WM MOTOS
+            </h1>
+
+            <div class="space-y-6">
+                <!-- ENDEREÇO REAL ATUALIZADO E CLICÁVEL -->
+                <div class="flex items-start gap-3.5">
+                    <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" target="_blank" rel="noopener noreferrer"
+                       class="w-10 h-10 rounded-xl bg-red-950/40 border border-red-900/50 flex items-center justify-center text-red-500 shrink-0 mt-0.5 hover:bg-red-600 hover:text-white transition"
+                       title="Abrir no Google Maps">
+                        <i class="fa-solid fa-location-dot text-lg"></i>
+                    </a>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-neutral-400 font-bold text-xs tracking-wider uppercase">ENDEREÇO</span>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                                <i class="fa-solid fa-map-pin text-[9px]"></i> GPS Verificado
+                            </span>
                         </div>
 
-                        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight leading-none text-white">
-                            Sua moto em <span class="text-wm-red">boas mãos.</span>
-                        </h1>
+                        <!-- Clickable Real Address Block -->
+                        <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="group block mt-1 focus:outline-none">
+                            <p class="text-white font-semibold text-base sm:text-lg leading-snug group-hover:text-red-400 transition underline decoration-red-500/50 decoration-dotted underline-offset-4">
+                                Avenida Ananias Costa, Nº 200, Centro
+                            </p>
+                            <p class="text-neutral-300 text-xs sm:text-sm font-medium mt-0.5 flex items-center gap-1.5">
+                                <span>São Geraldo do Araguaia — Pará</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[11px] text-red-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                            </p>
+                        </a>
 
-                        <p class="text-lg sm:text-xl text-gray-300 max-w-2xl font-normal leading-relaxed">
-                            Cuidado, qualidade e confiança em cada serviço. Diagnóstico preciso, ferramental especializado e rigor total em segurança técnica na manutenção da sua motocicleta.
+                        <p class="text-neutral-500 text-xs sm:text-sm mt-1">
+                            Atendimento Multimarcas • Peças, Revisão & Mecânica Especializada
                         </p>
 
-                        <div class="pt-2 flex flex-col sm:flex-row gap-4">
-                            <a href="#agendamento" class="w-full sm:w-auto px-8 py-4 rounded bg-wm-red hover:bg-wm-redDark text-white font-bold text-sm uppercase tracking-wider text-center transition red-glow flex items-center justify-center gap-3">
-                                <i class="fa-regular fa-calendar-check text-lg"></i>
-                                Agendar serviço
+                        <!-- Direct Interactive Google Maps Pill Link -->
+                        <div class="mt-3 flex flex-wrap items-center gap-2">
+                            <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-600/15 hover:bg-red-600/25 text-red-400 border border-red-500/30 text-xs font-bold tracking-wide transition active:scale-95">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                                <span>ABRIR NO GOOGLE MAPS</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
                             </a>
-                            <a href="#produtos" class="w-full sm:w-auto px-8 py-4 rounded bg-wm-card hover:bg-zinc-800 text-white border border-wm-border hover:border-gray-500 font-bold text-sm uppercase tracking-wider text-center transition flex items-center justify-center gap-3">
-                                <i class="fa-solid fa-gears text-wm-red text-lg"></i>
-                                Ver produtos
-                            </a>
-                        </div>
 
-                        <div class="pt-6 border-t border-wm-border/80 grid grid-cols-3 gap-4 max-w-lg">
-                            <div>
-                                <span class="block font-display text-2xl sm:text-3xl font-bold text-white">100%</span>
-                                <span class="text-xs text-wm-gray">Orçamento Transparente</span>
-                            </div>
-                            <div>
-                                <span class="block font-display text-2xl sm:text-3xl font-bold text-wm-red">NR-5</span>
-                                <span class="text-xs text-wm-gray">Segurança Certificada</span>
-                            </div>
-                            <div>
-                                <span class="block font-display text-2xl sm:text-3xl font-bold text-white">Garantia</span>
-                                <span class="text-xs text-wm-gray">Em Peças e Serviços*</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-5 relative">
-                        <div class="relative rounded-lg overflow-hidden border-2 border-wm-border bg-wm-card shadow-2xl group">
-                            <img 
-                                src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80" 
-                                alt="Motocicleta em destaque na WM MOTOS" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/800x600/141414/DC2626?text=WM+MOTOS+OFICINA';"
-                                class="w-full h-[320px] sm:h-[420px] object-cover object-center group-hover:scale-105 transition duration-500"
-                            >
-                            <div class="absolute inset-0 bg-gradient-to-t from-wm-black via-transparent to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 right-4 p-4 rounded bg-wm-black/90 backdrop-blur border border-wm-border flex items-center justify-between">
-                                <div>
-                                    <p class="text-xs text-wm-red font-bold uppercase tracking-wider">Padrão de Oficina</p>
-                                    <p class="text-sm font-semibold text-white">Atendimento Multimarcas (Baixa a Alta Cilindrada)</p>
-                                </div>
-                                <a href="#servicos" class="w-10 h-10 rounded bg-wm-red text-white flex items-center justify-center shrink-0 hover:bg-red-700 transition">
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVIÇOS DA OFICINA -->
-        <section id="servicos" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                    <div>
-                        <span class="text-wm-red font-bold text-xs uppercase tracking-widest block mb-2">Especialidades Mecânicas</span>
-                        <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white">
-                            Serviços da Oficina
-                        </h2>
-                    </div>
-                    <p class="text-sm text-wm-gray max-w-md">
-                        Todos os serviços passam por triagem presencial e confirmação técnica da administração antes da execução.
-                    </p>
-                </div>
-
-                <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Gerado via JavaScript -->
-                </div>
-
-                <div class="mt-10 p-4 rounded bg-wm-card border border-wm-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div class="flex items-center gap-3 text-sm text-gray-300">
-                        <i class="fa-solid fa-circle-info text-wm-red text-lg shrink-0"></i>
-                        <span>Precisa de atendimento imediato ou duma avaliação especial? Fale direto com <strong>Regivaldo</strong> ou com o <strong>Auxiliar Administrativo</strong>.</span>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-2 shrink-0 w-full sm:w-auto">
-                        <button onclick="openWhatsAppModal('Olá! Gostaria de atendimento na WM MOTOS.')" class="flex-1 sm:flex-initial px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-1.5">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp Oficiais
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- VITRINE DE PRODUTOS -->
-        <section id="produtos" class="py-16 lg:py-24 bg-zinc-950 border-b border-wm-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
-                    <div>
-                        <div class="inline-flex items-center gap-2 mb-2">
-                            <span class="text-wm-red font-bold text-xs uppercase tracking-widest">Peças & Acessórios</span>
-                            <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold uppercase">Estoque Conectado ao ERP</span>
-                        </div>
-                        <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white">
-                            Vitrine de Produtos
-                        </h2>
-                        <p class="text-sm text-wm-gray mt-1">
-                            Consulte a disponibilidade real no estoque para o ano e modelo da sua motocicleta.
-                        </p>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-                        <div class="relative flex-1 sm:w-64">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-                            <input 
-                                type="text" 
-                                id="product-search" 
-                                oninput="filterProducts()" 
-                                placeholder="Buscar peça ou óleo..." 
-                                class="w-full pl-10 pr-4 py-2.5 rounded bg-wm-card border border-wm-border text-sm text-white placeholder-gray-500 focus:outline-none focus:border-wm-red"
-                            >
-                        </div>
-                        <button onclick="openCartModal()" class="px-4 py-2.5 rounded bg-wm-card border border-wm-border hover:border-wm-red text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2 transition">
-                            <i class="fa-solid fa-boxes-stacked text-wm-red"></i>
-                            <span>Lista de Cotação (<span id="cart-count-inline">0</span>)</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar" id="category-filters">
-                    <button onclick="setProductCategory('Todos')" data-cat="Todos" class="cat-btn px-4 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase tracking-wider shrink-0 transition">
-                        Todos os Itens
-                    </button>
-                    <button onclick="setProductCategory('Lubrificantes')" data-cat="Lubrificantes" class="cat-btn px-4 py-2 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider shrink-0 transition">
-                        Óleos & Lubrificantes
-                    </button>
-                    <button onclick="setProductCategory('Transmissão')" data-cat="Transmissão" class="cat-btn px-4 py-2 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider shrink-0 transition">
-                        Kits de Transmissão
-                    </button>
-                    <button onclick="setProductCategory('Freios')" data-cat="Freios" class="cat-btn px-4 py-2 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider shrink-0 transition">
-                        Freios
-                    </button>
-                    <button onclick="setProductCategory('Pneus')" data-cat="Pneus" class="cat-btn px-4 py-2 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider shrink-0 transition">
-                        Pneus & Câmaras
-                    </button>
-                    <button onclick="setProductCategory('Elétrica')" data-cat="Elétrica" class="cat-btn px-4 py-2 rounded bg-wm-card border border-wm-border text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider shrink-0 transition">
-                        Baterias & Elétrica
-                    </button>
-                </div>
-
-                <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Renderizado via JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- MAPA DE RISCO E SEGURANÇA (NR-5) & AVISOS -->
-        <section id="seguranca" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center max-w-3xl mx-auto mb-14">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Prevenção de Acidentes e Controle Ambiental (NR-5)
-                    </div>
-                    <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white">
-                        Mapa de Risco & Segurança da Oficina
-                    </h2>
-                    <p class="text-sm text-wm-gray mt-2 leading-relaxed">
-                        Compromisso com a integridade física de nossa equipe e clientes. Conheça as diretrizes de segurança, EPIs obrigatórios e o layout operacional da WM MOTOS.
-                    </p>
-                </div>
-
-                <!-- Grids com as Imagens Oficiais do Mapa de Risco e Avisos -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
-                    <!-- Mapa de Risco Esquemático -->
-                    <div class="lg:col-span-6 rounded-lg overflow-hidden border-2 border-amber-500/40 bg-wm-card shadow-2xl group">
-                        <div class="p-3 bg-zinc-900 border-b border-wm-border flex items-center justify-between text-xs font-bold uppercase text-amber-400">
-                            <span><i class="fa-solid fa-map-location-dot mr-1.5"></i> Mapa de Riscos Ambientais e Setores</span>
-                            <span class="text-[10px] text-gray-400 font-mono">Oficina WM MOTOS</span>
-                        </div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" 
-                            onerror="this.onerror=null;this.src='https://placehold.co/800x700/141414/F59E0B?text=MAPA+DE+RISCO+NR-5+WM+MOTOS';"
-                            class="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-102 transition duration-500"
-                            alt="Mapa de Risco Oficina WM MOTOS"
-                        >
-                        <div class="p-4 bg-wm-black text-xs text-gray-300 space-y-1">
-                            <p class="font-bold text-white uppercase"><i class="fa-solid fa-shield-halved text-amber-400 mr-1"></i> Legenda de Riscos Oficiais:</p>
-                            <p class="text-wm-gray">🟢 <strong>Físico</strong> (Ruído/Calor) | 🔴 <strong>Químico</strong> (Óleos/Gases) | 🟤 <strong>Biológico</strong> | 🟡 <strong>Ergonômico</strong> | 🔵 <strong>Acidentes</strong> (Choque/Queda).</p>
-                        </div>
-                    </div>
-
-                    <!-- Cartaz de Segurança & Alerta Máximo -->
-                    <div class="lg:col-span-6 rounded-lg overflow-hidden border-2 border-wm-red/50 bg-wm-card shadow-2xl group">
-                        <div class="p-3 bg-zinc-900 border-b border-wm-border flex items-center justify-between text-xs font-bold uppercase text-wm-red">
-                            <span><i class="fa-solid fa-helmet-safety mr-1.5"></i> Normas de Segurança e EPI Obrigatório</span>
-                            <span class="text-[10px] text-gray-400 font-mono">Trabalhe com Atenção</span>
-                        </div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" 
-                            onerror="this.onerror=null;this.src='https://placehold.co/800x700/141414/DC2626?text=SEGURANCA+NA+OFICINA+WM+MOTOS';"
-                            class="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-102 transition duration-500"
-                            alt="Segurança na Oficina WM MOTOS"
-                        >
-                        <div class="p-4 bg-wm-black text-xs text-gray-300 space-y-1">
-                            <p class="font-bold text-white uppercase"><i class="fa-solid fa-triangle-exclamation text-wm-red mr-1"></i> Emergência & Contatos:</p>
-                            <p class="text-wm-gray">🚨 <strong>Bombeiros:</strong> 193 | 🚑 <strong>SAMU:</strong> 192 — A segurança de todos depende de você!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4 Pilares de Segurança -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 rounded-lg bg-wm-card border border-amber-500/30">
-                        <div class="w-10 h-10 rounded bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-base mb-3">1</div>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">EPI Obrigatório</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">
-                            Calçado fechado (proibido chinelo), óculos de proteção e protetor auricular para uso em esmeril e lixadeira.
-                        </p>
-                    </div>
-                    <div class="p-6 rounded-lg bg-wm-card border border-wm-red/30">
-                        <div class="w-10 h-10 rounded bg-wm-red/10 text-wm-red flex items-center justify-center font-bold text-base mb-3">2</div>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Alto Risco</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">
-                            Tanques de gasolina longe de tomadas e benjamins. Mantenha o extintor de incêndio sempre desobstruído!
-                        </p>
-                    </div>
-                    <div class="p-6 rounded-lg bg-wm-card border border-emerald-500/30">
-                        <div class="w-10 h-10 rounded bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-base mb-3">3</div>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Ergonomia</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">
-                            Dobre os joelhos ao levantar cargas. Não use a coluna. Evite trabalhar muito tempo agachado no chão.
-                        </p>
-                    </div>
-                    <div class="p-6 rounded-lg bg-wm-card border border-yellow-500/30">
-                        <div class="w-10 h-10 rounded bg-yellow-500/10 text-yellow-400 flex items-center justify-center font-bold text-base mb-3">4</div>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">Organização</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">
-                            Piso limpo e sem óleo. Recolha cabos e mangueiras imediatamente. Ferramentas sempre no painel.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AGENDAMENTO DE SERVIÇOS -->
-        <section id="agendamento" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                    <div class="lg:col-span-5 space-y-6">
-                        <div>
-                            <span class="text-wm-red font-bold text-xs uppercase tracking-widest block mb-2">Atendimento Programado</span>
-                            <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white">
-                                Solicitar Agendamento
-                            </h2>
-                        </div>
-                        <p class="text-sm text-gray-300 leading-relaxed">
-                            Preencha os dados da sua motocicleta e a data pretendida. Nossa equipe técnica analisará a disponibilidade do box mecânico e confirmará diretamente no seu WhatsApp.
-                        </p>
-
-                        <div class="space-y-4 pt-2">
-                            <div class="flex items-start gap-4 p-4 rounded bg-wm-card border border-wm-border">
-                                <div class="w-8 h-8 rounded bg-wm-red/20 border border-wm-red text-wm-red font-bold flex items-center justify-center shrink-0 text-sm">1</div>
-                                <div>
-                                    <h3 class="text-sm font-bold text-white">Envio ao Backend & WhatsApp Oficial</h3>
-                                    <p class="text-xs text-wm-gray mt-0.5">Sua ficha é salva no painel da oficina e encaminhada ao Regivaldo ou Auxiliar.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded bg-wm-card border border-wm-border">
-                                <div class="w-8 h-8 rounded bg-wm-red/20 border border-wm-red text-wm-red font-bold flex items-center justify-center shrink-0 text-sm">2</div>
-                                <div>
-                                    <h3 class="text-sm font-bold text-white">Análise da Oficina</h3>
-                                    <p class="text-xs text-wm-gray mt-0.5">Conferimos a agenda dos mecânicos e as peças necessárias no estoque.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded bg-wm-card border border-wm-border">
-                                <div class="w-8 h-8 rounded bg-wm-red/20 border border-wm-red text-wm-red font-bold flex items-center justify-center shrink-0 text-sm">3</div>
-                                <div>
-                                    <h3 class="text-sm font-bold text-white">Confirmação Oficial</h3>
-                                    <p class="text-xs text-wm-gray mt-0.5">O horário é confirmado após o retorno da equipe WM MOTOS.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7">
-                        <div class="p-6 sm:p-8 rounded-lg bg-wm-card border border-wm-border shadow-xl">
-                            <div class="flex items-center justify-between pb-6 mb-6 border-b border-wm-border">
-                                <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                                    <i class="fa-solid fa-clipboard-list text-wm-red"></i>
-                                    Ficha de Pré-Agendamento
-                                </h3>
-                                <span class="text-[11px] text-wm-gray">* Campos obrigatórios</span>
-                            </div>
-
-                            <form id="booking-form" onsubmit="handleBookingSubmit(event)" novalidate class="space-y-5">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                    <div>
-                                        <label for="client-name" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Seu Nome Completo *</label>
-                                        <input type="text" id="client-name" placeholder="Ex: Carlos Eduardo" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red">
-                                    </div>
-                                    <div>
-                                        <label for="client-phone" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Telefone / WhatsApp *</label>
-                                        <input type="tel" id="client-phone" oninput="maskPhone(this)" placeholder="(00) 90000-0000" maxlength="15" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red">
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                    <div>
-                                        <label for="bike-model" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Marca / Modelo e Ano da Moto *</label>
-                                        <input type="text" id="bike-model" placeholder="Ex: Honda CB 300F Twister 2024" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red">
-                                    </div>
-                                    <div>
-                                        <label for="service-type" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Serviço Desejado *</label>
-                                        <select id="service-type" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white focus:outline-none focus:border-wm-red">
-                                            <option value="">Selecione um serviço...</option>
-                                            <option value="Manutenção Preventiva">Manutenção Preventiva</option>
-                                            <option value="Troca de Óleo e Filtros">Troca de Óleo e Filtros</option>
-                                            <option value="Revisão Geral Completa">Revisão Geral Completa</option>
-                                            <option value="Sistema de Freios">Sistema de Freios</option>
-                                            <option value="Kit de Transmissão (Relação)">Kit de Transmissão (Relação)</option>
-                                            <option value="Diagnóstico Eletrônico / Injeção">Diagnóstico Eletrônico / Injeção</option>
-                                            <option value="Suspensão e Direção">Suspensão e Direção</option>
-                                            <option value="Elétrica e Baterias">Elétrica e Baterias</option>
-                                            <option value="Avaliação Técnica / Outros Serviços">Avaliação Técnica / Outros Serviços</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="preferred-date" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Data Pretendida para Deixar a Moto *</label>
-                                    <input type="date" id="preferred-date" class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white focus:outline-none focus:border-wm-red">
-                                </div>
-
-                                <div>
-                                    <label for="booking-notes" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Observações ou Sintomas Relatados (Opcional)</label>
-                                    <textarea id="booking-notes" rows="3" placeholder="Descreva ruídos, falhas ou peças que deseja substituir..." class="w-full px-4 py-3 rounded bg-wm-black border border-wm-border text-sm text-white placeholder-gray-600 focus:outline-none focus:border-wm-red"></textarea>
-                                </div>
-
-                                <!-- Escolha do Destinatário Oficial no WhatsApp -->
-                                <div class="p-4 rounded bg-wm-black border border-wm-border space-y-3">
-                                    <label class="block text-xs font-bold uppercase tracking-wider text-emerald-400">
-                                        <i class="fa-brands fa-whatsapp mr-1"></i> Encaminhar Agendamento / Solicitação para: *
-                                    </label>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <label class="flex items-start gap-3 p-3 rounded bg-wm-card border border-wm-border hover:border-emerald-500 cursor-pointer transition">
-                                            <input type="radio" name="booking-recipient" value="regivaldo" checked class="mt-1 text-wm-red focus:ring-0">
-                                            <div>
-                                                <span class="block text-xs font-bold text-white">Regivaldo (Proprietário)</span>
-                                                <span class="block text-[11px] font-mono text-emerald-400">(94) 98416-4948</span>
-                                                <span class="block text-[10px] text-wm-gray mt-0.5">Direção Técnica & Orçamentos</span>
-                                            </div>
-                                        </label>
-                                        <label class="flex items-start gap-3 p-3 rounded bg-wm-card border border-wm-border hover:border-emerald-500 cursor-pointer transition">
-                                            <input type="radio" name="booking-recipient" value="auxiliar" class="mt-1 text-wm-red focus:ring-0">
-                                            <div>
-                                                <span class="block text-xs font-bold text-white">Auxiliar Oficina / Admin</span>
-                                                <span class="block text-[11px] font-mono text-emerald-400">(94) 99288-4920</span>
-                                                <span class="block text-[10px] text-wm-gray mt-0.5">Recepção, Agenda & Atendimento</span>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="space-y-3">
-                                    <button type="submit" class="w-full py-4 px-6 rounded bg-wm-red hover:bg-wm-redDark text-white font-bold text-sm uppercase tracking-wider transition red-glow flex items-center justify-center gap-2 shadow-lg">
-                                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                                        Salvar no Sistema & Enviar no WhatsApp
-                                    </button>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                                        <button type="button" onclick="submitBookingToRecipient('regivaldo')" class="py-3 px-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 shadow">
-                                            <i class="fa-brands fa-whatsapp text-base"></i> Enviar p/ Regivaldo (94) 98416-4948
-                                        </button>
-                                        <button type="button" onclick="submitBookingToRecipient('auxiliar')" class="py-3 px-3 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 shadow">
-                                            <i class="fa-brands fa-whatsapp text-base"></i> Enviar p/ Auxiliar (94) 99288-4920
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <!-- Feedback pós-envio -->
-                            <div id="booking-feedback" class="hidden mt-6 p-6 rounded-lg bg-emerald-950/60 border-2 border-emerald-500 space-y-4 shadow-2xl">
-                                <div class="flex items-start gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider">Salvo no ERP & Pronto para WhatsApp</span>
-                                        <h4 class="text-base font-bold text-white mt-1">Ficha validada! Toque abaixo caso o WhatsApp não abra automaticamente:</h4>
-                                    </div>
-                                </div>
-                                <div id="booking-summary-box" class="p-3.5 rounded bg-wm-black border border-wm-border text-xs text-gray-300 font-mono space-y-1"></div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                                    <a id="btn-wa-booking-regivaldo" href="https://wa.me/5594984164948" target="_blank" rel="noopener noreferrer" class="py-3.5 px-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition text-center shadow-lg border border-emerald-400">
-                                        <i class="fa-brands fa-whatsapp text-lg"></i> Regivaldo (94) 98416-4948
-                                    </a>
-                                    <a id="btn-wa-booking-auxiliar" href="https://wa.me/5594992884920" target="_blank" rel="noopener noreferrer" class="py-3.5 px-4 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition text-center shadow-lg border border-emerald-400">
-                                        <i class="fa-brands fa-whatsapp text-lg"></i> Auxiliar (94) 99288-4920
-                                    </a>
-                                </div>
-                                <div class="pt-2 flex justify-end">
-                                    <button onclick="resetBookingForm()" type="button" class="py-2 px-4 rounded bg-zinc-800 hover:bg-zinc-700 text-gray-200 text-xs font-bold uppercase">
-                                        Novo Pedido
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SOBRE E DIFERENCIAIS -->
-        <section id="sobre" class="py-16 lg:py-24 bg-zinc-950 border-b border-wm-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-14">
-                    <span class="text-wm-red font-bold text-xs uppercase tracking-widest block mb-2">Por que escolher a WM MOTOS</span>
-                    <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white">
-                        Compromisso com a Engenharia da sua Moto
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 rounded-lg bg-wm-card border border-wm-border">
-                        <div class="w-12 h-12 rounded bg-wm-red/10 border border-wm-red/30 text-wm-red flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-screwdriver-wrench"></i>
-                        </div>
-                        <h3 class="text-base font-bold text-white mb-2">Ferramental Adequado</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">Uso de torquímetros e elevadores para evitar danos em roscas e carenagens.</p>
-                    </div>
-                    <div class="p-6 rounded-lg bg-wm-card border border-wm-border">
-                        <div class="w-12 h-12 rounded bg-wm-red/10 border border-wm-red/30 text-wm-red flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-file-invoice"></i>
-                        </div>
-                        <h3 class="text-base font-bold text-white mb-2">Orçamento Sem Surpresas</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">Nenhuma peça é substituída sem a aprovação prévia do cliente.</p>
-                    </div>
-                    <div class="p-6 rounded-lg bg-wm-card border border-wm-border">
-                        <div class="w-12 h-12 rounded bg-wm-red/10 border border-wm-red/30 text-wm-red flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-medal"></i>
-                        </div>
-                        <h3 class="text-base font-bold text-white mb-2">Peças Selecionadas</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">Linhas originais e marcas de reposição homologadas.</p>
-                    </div>
-                    <div class="p-6 rounded-lg bg-wm-card border border-wm-border">
-                        <div class="w-12 h-12 rounded bg-wm-red/10 border border-wm-red/30 text-wm-red flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <h3 class="text-base font-bold text-white mb-2">Segurança NR-5</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed">Oficina organizada com rigor técnico e prevenção de acidentes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTATO E LOCALIZAÇÃO -->
-        <section id="contato" class="py-16 lg:py-24 bg-wm-black border-b border-wm-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                    <div class="lg:col-span-6 p-6 sm:p-8 rounded-lg bg-wm-card border border-wm-border flex flex-col justify-between space-y-6">
-                        <div>
-                            <span class="text-wm-red font-bold text-xs uppercase tracking-widest block mb-2">Localização & Atendimento</span>
-                            <h2 class="font-display text-4xl font-bold uppercase tracking-wide text-white">
-                                Visite a WM MOTOS
-                            </h2>
-                        </div>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-3.5">
-                                <div class="w-10 h-10 rounded bg-wm-black border border-wm-border text-wm-red flex items-center justify-center shrink-0">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300">Endereço</h3>
-                                    <p class="text-white font-medium mt-0.5">Av. Principal da Oficina, Nº 1000 — Pará</p>
-                                    <p class="text-xs text-wm-gray">Atendimento Multimarcas</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3.5">
-                                <div class="w-10 h-10 rounded bg-wm-black border border-wm-border text-emerald-400 flex items-center justify-center shrink-0">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Canais Oficiais de WhatsApp</h3>
-                                    <p class="text-white font-medium mt-0.5">Regivaldo (Proprietário): <a href="https://wa.me/5594984164948" target="_blank" class="text-emerald-400 hover:underline">(94) 98416-4948</a></p>
-                                    <p class="text-white font-medium mt-0.5">Auxiliar / Administrativo: <a href="https://wa.me/5594992884920" target="_blank" class="text-emerald-400 hover:underline">(94) 99288-4920</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-wm-border">
-                            <button onclick="openWhatsAppModal('Olá! Vim pelo site e gostaria de atendimento.')" class="w-full py-3.5 px-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase transition flex items-center justify-center gap-2 shadow-lg">
-                                <i class="fa-brands fa-whatsapp text-lg"></i> Abrir WhatsApp dos Responsáveis
+                            <button onclick="copyMapLink()" 
+                                    class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-300 border border-neutral-800 text-xs font-medium transition active:scale-95">
+                                <i class="fa-regular fa-copy text-xs"></i>
+                                <span id="copyBtnText">Copiar Endereço / Link</span>
                             </button>
                         </div>
                     </div>
+                </div>
 
-                    <div class="lg:col-span-6 rounded-lg bg-wm-card border border-wm-border p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-                        <div class="space-y-3">
-                            <span class="px-2.5 py-1 rounded bg-wm-black border border-wm-border text-[10px] font-bold uppercase tracking-wider text-wm-red inline-block">
-                                Box Técnico & Segurança
-                            </span>
-                            <h3 class="font-display text-3xl font-bold uppercase text-white">
-                                Estrutura Pronta para Atendimento
-                            </h3>
-                            <p class="text-xs text-wm-gray leading-relaxed">
-                                Recepção coberta para triagem imediata da sua motocicleta seguindo rigorosos padrões de segurança ocupacional e ambiental (NR-5).
-                            </p>
-                        </div>
-                        <div class="pt-4">
-                            <a href="#seguranca" class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:underline">
-                                <i class="fa-solid fa-triangle-exclamation"></i> Ver Mapa de Risco Completo
-                            </a>
-                        </div>
+                <!-- CANAIS OFICIAIS DE WHATSAPP -->
+                <div class="flex items-start gap-3.5 pt-2 border-t border-neutral-800/60">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-950/40 border border-emerald-900/50 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
                     </div>
+                    <div class="flex-1 space-y-1.5">
+                        <span class="text-emerald-400 font-bold text-xs tracking-wider uppercase block">
+                            CANAIS OFICIAIS DE WHATSAPP
+                        </span>
+                        <p class="text-white text-sm sm:text-base leading-snug">
+                            Regivaldo (Proprietário): 
+                            <a href="https://wa.me/5594984164948?text=Ol%C3%A1%20Regivaldo%2C%20vim%20pelo%20site%20da%20WM%20Motos!" 
+                               target="_blank" rel="noopener noreferrer"
+                               class="text-emerald-400 hover:text-emerald-300 font-semibold underline-offset-4 hover:underline">
+                                (94) 98416-4948
+                            </a>
+                        </p>
+                        <p class="text-white text-sm sm:text-base leading-snug">
+                            Auxiliar / Administrativo: 
+                            <a href="https://wa.me/5594992884920?text=Ol%C3%A1%2C%20gostaria%20de%20atendimento%20administrativo%20ou%20or%C3%A7amento%20na%20WM%20Motos!" 
+                               target="_blank" rel="noopener noreferrer"
+                               class="text-emerald-400 hover:text-emerald-300 font-semibold underline-offset-4 hover:underline">
+                                (94) 99288-4920
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA BUTTONS -->
+                <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <!-- Botão WhatsApp dos Responsáveis -->
+                    <button onclick="openWhatsappSelector()" 
+                            class="w-full py-3.5 px-4 rounded-xl bg-[#109868] hover:bg-[#0d8259] text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-3 shadow-lg shadow-emerald-950/50 transition active:scale-[0.99]">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>ABRIR WHATSAPP DOS RESPONSÁVEIS</span>
+                    </button>
+
+                    <!-- Botão Traçar Rota até Av. Ananias Costa nº 200 -->
+                    <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" 
+                       target="_blank" rel="noopener noreferrer"
+                       class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-3 shadow-lg shadow-red-950/50 border border-red-500/30 transition active:scale-[0.99]">
+                        <i class="fa-solid fa-location-arrow text-base"></i>
+                        <span>TRAÇAR ROTA NO GOOGLE MAPS</span>
+                    </a>
                 </div>
             </div>
         </section>
+
+        <section class="bg-[#121214] border border-neutral-800/90 rounded-2xl p-5 sm:p-7 shadow-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-red-950/40 border border-red-900/40 text-red-500 text-[11px] font-bold uppercase tracking-widest mb-3">
+                <i class="fa-solid fa-screwdriver-wrench text-xs"></i>
+                <span>BOX TÉCNICO & OFICINA</span>
+            </div>
+
+            <h2 class="font-display text-2xl sm:text-4xl text-white uppercase tracking-wide leading-tight">
+                ESTRUTURA PRONTA<br>
+                <span class="text-neutral-500">PARA ATENDIMENTO</span>
+            </h2>
+            <p class="text-neutral-400 text-sm sm:text-base mt-2 max-w-2xl">
+                Localizada estrategicamente na <strong class="text-white">Avenida Ananias Costa, nº 200, Centro</strong>, nossa oficina conta com ferramental completo, diagnóstico eletrônico e estoque próprio de peças multimarcas.
+            </p>
+
+            <!-- Service Highlights Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-6">
+                <div class="p-4 rounded-xl bg-neutral-900/70 border border-neutral-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="w-9 h-9 rounded-lg bg-red-600/15 text-red-500 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Revisão Geral & Motor</h3>
+                        <p class="text-neutral-400 text-xs mt-1 leading-relaxed">
+                            Ajuste de válvulas, retífica, embreagem, kit relação, freios e suspensão com garantia técnica.
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-semibold text-red-400 mt-3 inline-flex items-center gap-1">
+                        <i class="fa-solid fa-check-circle"></i> Box Técnico Especializado
+                    </span>
+                </div>
+
+                <div class="p-4 rounded-xl bg-neutral-900/70 border border-neutral-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="w-9 h-9 rounded-lg bg-red-600/15 text-red-500 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Injeção & Elétrica</h3>
+                        <p class="text-neutral-400 text-xs mt-1 leading-relaxed">
+                            Limpeza de bicos, leitura com scanner multimarcas, baterias, estatores e partida elétrica.
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-semibold text-red-400 mt-3 inline-flex items-center gap-1">
+                        <i class="fa-solid fa-check-circle"></i> Diagnóstico Preciso
+                    </span>
+                </div>
+
+                <div class="p-4 rounded-xl bg-neutral-900/70 border border-neutral-800/80 flex flex-col justify-between">
+                    <div>
+                        <div class="w-9 h-9 rounded-lg bg-red-600/15 text-red-500 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-oil-can"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base">Peças & Lubrificantes</h3>
+                        <p class="text-neutral-400 text-xs mt-1 leading-relaxed">
+                            Pneus, óleos Mobil/Motul, filtros, baterias e peças originais e paralelas de alta performance.
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-semibold text-red-400 mt-3 inline-flex items-center gap-1">
+                        <i class="fa-solid fa-check-circle"></i> Pronta Entrega no Balcão
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#121214] border border-neutral-800/90 rounded-2xl p-5 sm:p-7 shadow-2xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+                <div>
+                    <span class="text-red-500 font-bold text-xs tracking-widest uppercase">CATÁLOGO RÁPIDO</span>
+                    <h2 class="font-display text-xl sm:text-2xl text-white uppercase mt-0.5">PEÇAS & SERVIÇOS EM DESTAQUE</h2>
+                </div>
+                <!-- Category Filter Pills -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+                    <button onclick="filterProducts('todos')" id="tab-todos" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white transition">Todos</button>
+                    <button onclick="filterProducts('pecas')" id="tab-pecas" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800 transition">Peças</button>
+                    <button onclick="filterProducts('servicos')" id="tab-servicos" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800 transition">Serviços</button>
+                </div>
+            </div>
+
+            <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
     </main>
 
-    <!-- PAINEL ADMINISTRATIVO (ERP 100% USÁVEL) -->
-    <section id="erp-view" class="hidden min-h-screen bg-zinc-950 pb-20">
-        <div class="bg-emerald-500/10 border-b border-emerald-500/30 px-4 py-3">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div class="flex items-center gap-3 text-xs text-emerald-300">
-                    <i class="fa-solid fa-database text-lg text-emerald-400 shrink-0"></i>
-                    <span>
-                        <strong>PAINEL ADMINISTRATIVO (ERP 100% USÁVEL):</strong> Gerencie Estoque, Pedidos do Site, Ordens de Serviço, Caixa, Clientes e Configurações em tempo real.
-                    </span>
-                </div>
-                <div class="flex items-center gap-2 shrink-0">
-                    <span id="cloud-status-badge" class="px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700 text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sistema Ativo
-                    </span>
-                    <button onclick="switchMode('public')" class="px-3 py-1.5 rounded bg-wm-red text-white text-xs font-bold uppercase tracking-wider hover:bg-red-700 transition">
-                        Voltar ao Site Público
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <aside class="lg:col-span-3 space-y-4">
-                    <div class="p-4 rounded-lg bg-wm-card border border-wm-border">
-                        <div class="flex items-center justify-between mb-3 pb-3 border-b border-wm-border">
-                            <div>
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-wm-red block">WM ERP • Gestão</span>
-                                <h2 class="text-sm font-bold text-white">Módulos do Sistema</h2>
-                            </div>
-                            <span class="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-700 text-[10px] text-emerald-300 font-mono">Online</span>
-                        </div>
-                        <nav id="erp-sidebar-nav" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-1.5">
-                            <!-- Gerado via JS -->
-                        </nav>
-                    </div>
-                </aside>
-
-                <div class="lg:col-span-9 space-y-6">
-                    <div id="erp-module-content" class="p-6 sm:p-8 rounded-lg bg-wm-card border border-wm-border min-h-[560px] flex flex-col justify-between">
-                        <!-- Conteúdo do ERP via JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL WHATSAPP OFICIAL -->
-    <div id="whatsapp-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-wm-card border-2 border-emerald-500 rounded-lg max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div class="flex items-center justify-between border-b border-wm-border pb-3">
-                <div class="flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-emerald-400 text-2xl"></i>
-                    <h3 class="text-base font-bold text-white">Contatos Oficiais WM MOTOS</h3>
-                </div>
-                <button onclick="closeWhatsAppModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <p class="text-xs text-gray-300">Escolha o responsável para atendimento imediato via WhatsApp:</p>
-            <div class="space-y-3">
-                <a id="wa-link-regivaldo" href="https://wa.me/5594984164948" target="_blank" class="w-full p-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase flex items-center justify-between shadow-lg">
-                    <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Regivaldo (Proprietário)</span>
-                    <span class="font-mono text-[11px] bg-black/30 px-2 py-0.5 rounded">(94) 98416-4948</span>
-                </a>
-                <a id="wa-link-auxiliar" href="https://wa.me/5594992884920" target="_blank" class="w-full p-4 rounded bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs uppercase flex items-center justify-between shadow-lg">
-                    <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Auxiliar Oficina / Admin</span>
-                    <span class="font-mono text-[11px] bg-black/30 px-2 py-0.5 rounded">(94) 99288-4920</span>
-                </a>
-            </div>
-            <div>
-                <label class="block text-[11px] uppercase text-wm-gray mb-1">Mensagem a ser enviada:</label>
-                <textarea id="wa-modal-message" rows="3" class="w-full p-2.5 rounded bg-wm-black border border-wm-border text-xs text-gray-200"></textarea>
-            </div>
-        </div>
-    </div>
-
-    <!-- GUIA PASSO A PASSO -->
-    <div id="site-tour-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-wm-card border-2 border-wm-red rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div class="flex items-center justify-between border-b border-wm-border pb-3">
-                <h3 id="tour-step-title" class="text-xl font-bold uppercase text-white">Guia Passo a Passo WM MOTOS</h3>
-                <button onclick="closeSiteTour()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <p id="tour-step-desc" class="text-sm text-gray-200 leading-relaxed"></p>
-            <div class="pt-3 border-t border-wm-border flex justify-between">
-                <button onclick="prevTourStep()" class="px-4 py-2 rounded bg-zinc-800 text-xs font-bold text-gray-300">Anterior</button>
-                <button onclick="nextTourStep()" class="px-5 py-2 rounded bg-wm-red text-xs font-bold text-white">Próximo</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- BOTÃO FLUTUANTE WHATSAPP -->
-    <button onclick="openWhatsAppModal('Olá! Vim pelo site da WM MOTOS e gostaria de atendimento.')" class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3.5 rounded-full shadow-2xl transition transform hover:scale-105">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-        <span class="text-xs font-bold uppercase hidden sm:inline">WhatsApp (Regivaldo & Auxiliar)</span>
+    <!-- Floating Quick WhatsApp Action Button (Bottom Right, matching screenshot) -->
+    <button onclick="openWhatsappSelector()" 
+            title="Falar no WhatsApp da WM Motos"
+            class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#109868] hover:bg-[#0d8259] text-white shadow-2xl shadow-emerald-950 flex items-center justify-center border-2 border-emerald-400/30 animate-whatsapp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
     </button>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="wm-toast" class="fixed top-24 right-5 z-50 hidden max-w-sm bg-wm-card border-2 border-emerald-500 text-white px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-        <div class="text-xs"><p id="wm-toast-title" class="font-bold text-emerald-400"></p><p id="wm-toast-msg" class="text-gray-200"></p></div>
+    <!-- MODAL: SELETOR DE WHATSAPP DOS RESPONSÁVEIS -->
+    <div id="whatsappModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#141417] border border-neutral-800 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-neutral-800 pb-3">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-base">Atendimento WM Motos</h3>
+                        <p class="text-neutral-400 text-xs">Escolha com quem deseja falar agora</p>
+                    </div>
+                </div>
+                <button onclick="closeWhatsappSelector()" class="w-8 h-8 rounded-lg bg-neutral-900 text-neutral-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2.5">
+                <a href="https://wa.me/5594984164948?text=Ol%C3%A1%20Regivaldo%2C%20vim%20pelo%20sistema%20da%20WM%20Motos%20(Av.%20Ananias%20Costa%2C%20200)%20e%20gostaria%20de%20atendimento." 
+                   target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800/90 border border-neutral-800 transition group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold">
+                            R
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm group-hover:text-emerald-400 transition">Regivaldo (Proprietário)</p>
+                            <p class="text-emerald-400 text-xs font-semibold">(94) 98416-4948</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-neutral-500 group-hover:text-emerald-400"></i>
+                </a>
+
+                <a href="https://wa.me/5594992884920?text=Ol%C3%A1%2C%20vim%20pelo%20sistema%20da%20WM%20Motos%20(Av.%20Ananias%20Costa%2C%20200)%20e%20gostaria%20de%20falar%20com%20o%20setor%20Administrativo." 
+                   target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800/90 border border-neutral-800 transition group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold">
+                            A
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm group-hover:text-emerald-400 transition">Auxiliar / Administrativo</p>
+                            <p class="text-emerald-400 text-xs font-semibold">(94) 99288-4920</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-neutral-500 group-hover:text-emerald-400"></i>
+                </a>
+            </div>
+
+            <div class="pt-2 border-t border-neutral-800 text-center">
+                <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" target="_blank" rel="noopener noreferrer"
+                   class="text-xs text-red-400 hover:text-red-300 font-medium inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Av. Ananias Costa, nº 200, Centro — Ver no Google Maps</span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <!-- RODAPÉ -->
-    <footer class="bg-wm-black border-t border-wm-border py-10 text-xs text-wm-gray">
-        <div class="max-w-7xl mx-auto px-4 text-center sm:flex sm:justify-between">
-            <p>© 2026 WM MOTOS. CNPJ: 00.000.000/0001-00. Segurança NR-5 Ativa.</p>
-            <p class="mt-2 sm:mt-0">Contatos Oficiais: (94) 98416-4948 (Regivaldo) | (94) 99288-4920 (Auxiliar)</p>
+    <!-- MODAL: CARRINHO DE ORÇAMENTO -->
+    <div id="cartModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#141417] border border-neutral-800 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-neutral-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-red-500"></i>
+                    <h3 class="font-bold text-white text-base">Orçamento Rápido WM Motos</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-lg bg-neutral-900 text-neutral-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="cartItemsContainer" class="max-h-60 overflow-y-auto space-y-2">
+                <!-- Dynamic cart items -->
+            </div>
+
+            <div class="border-t border-neutral-800 pt-3 flex items-center justify-between">
+                <span class="text-xs uppercase text-neutral-400 font-bold">Total Estimado:</span>
+                <span id="cartTotalValue" class="text-lg font-extrabold text-white">R$ 0,00</span>
+            </div>
+
+            <button onclick="sendCartToWhatsapp()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>ENVIAR PEDIDO PELO WHATSAPP</span>
+            </button>
         </div>
-    </footer>
+    </div>
+
+    <!-- MODAL: PAINEL ADMIN (ERP) -->
+    <div id="erpModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#141417] border border-neutral-800 rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-neutral-800 pb-3">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-red-600/20 text-red-500 flex items-center justify-center">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-base">Painel Admin (ERP) — WM Motos</h3>
+                        <p class="text-neutral-400 text-xs">Dados cadastrais da unidade física atualizados</p>
+                    </div>
+                </div>
+                <button onclick="toggleErpModal()" class="w-8 h-8 rounded-lg bg-neutral-900 text-neutral-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-neutral-900/90 border border-neutral-800 space-y-2 text-xs">
+                <div class="flex justify-between">
+                    <span class="text-neutral-400">Unidade Oficial:</span>
+                    <span class="text-white font-semibold">WM Motos — Centro Técnico & Peças</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-neutral-400">Endereço Cadastrado:</span>
+                    <span class="text-emerald-400 font-semibold text-right">Av. Ananias Costa, nº 200, Centro</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-neutral-400">Link Google Maps:</span>
+                    <a href="https://maps.app.goo.gl/4RXoUYoX2greMSCd6" target="_blank" rel="noopener noreferrer" class="text-red-400 underline font-semibold">
+                        maps.app.goo.gl/4RXoUYoX2greMSCd6
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 text-center">
+                <div class="p-3 rounded-xl bg-neutral-900 border border-neutral-800">
+                    <p class="text-[11px] text-neutral-400 uppercase">OS em Andamento</p>
+                    <p class="text-xl font-black text-white mt-0.5">08</p>
+                </div>
+                <div class="p-3 rounded-xl bg-neutral-900 border border-neutral-800">
+                    <p class="text-[11px] text-neutral-400 uppercase">Status Box Técnico</p>
+                    <p class="text-sm font-bold text-emerald-400 mt-1.5"><i class="fa-solid fa-circle text-[8px] mr-1"></i>Operacional</p>
+                </div>
+            </div>
+
+            <button onclick="toggleErpModal()" class="w-full py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-xs uppercase tracking-wider">
+                Fechar Painel
+            </button>
+        </div>
+    </div>
 
     <script>
-        const WHATSAPP_NUMBERS = {
-            regivaldo: '5594984164948',
-            auxiliar: '5594992884920'
-        };
+        const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/4RXoUYoX2greMSCd6";
+        const FULL_ADDRESS = "Avenida Ananias Costa, nº 200, Centro - São Geraldo do Araguaia, PA";
 
-        const SERVICES_DATA = [
-            { id: 'srv-01', title: 'Manutenção Preventiva', icon: 'fa-shield-halved', badge: 'Sob Inspeção', description: 'Lubrificação de cabos, ajuste de folgas, verificação de rolamentos e check-list de segurança.' },
-            { id: 'srv-02', title: 'Troca de Óleo e Filtros', icon: 'fa-oil-can', badge: 'Rápido', description: 'Substituição de óleo do motor e filtro com verificação de nível e vedação.' },
-            { id: 'srv-03', title: 'Revisão Geral Completa', icon: 'fa-screwdriver-wrench', badge: 'Mais Procurado', description: 'Desmontagem técnica para limpeza, suspensão, freios e sistema elétrico.' },
-            { id: 'srv-04', title: 'Sistema de Freios', icon: 'fa-compact-disc', badge: 'Segurança', description: 'Troca de pastilhas, discos, limpeza de pinças e fluido DOT 4.' },
-            { id: 'srv-05', title: 'Kit de Transmissão', icon: 'fa-gears', badge: 'Mecânica', description: 'Substituição e ajuste de coroa, corrente e pinhão.' },
-            { id: 'srv-06', title: 'Diagnóstico e Injeção', icon: 'fa-microchip', badge: 'Eletrônica', description: 'Leitura via scanner, limpeza de bico injetor e regulagem.' }
+        // Catalog Data
+        const catalogItems = [
+            { id: 1, name: "Revisão Completa Multimarcas", category: "servicos", price: 180.00, tag: "Box Técnico" },
+            { id: 2, name: "Troca de Óleo + Verificação de Filtro", category: "servicos", price: 48.00, tag: "Rápido" },
+            { id: 3, name: "Kit Relação Aço 1045 (Titan/Fan/Bros)", category: "pecas", price: 145.00, tag: "Alta Durabilidade" },
+            { id: 4, name: "Limpeza de Bico e Diagnóstico Scanner", category: "servicos", price: 85.00, tag: "Injeção Eletrônica" },
+            { id: 5, name: "Bateria Selada 5Ah / 6Ah Garantida", category: "pecas", price: 195.00, tag: "Elétrica" },
+            { id: 6, name: "Pneu Traseiro Street / Trail Montado", category: "pecas", price: 269.00, tag: "Pronta Entrega" }
         ];
 
-        let PRODUCTS_DATA = [
-            { id: 'PRD-101', sku: 'PRD-101', name: 'Óleo Semissintético 10W-30 4T (1L)', category: 'Lubrificantes', priceDemo: 48.00, stockQty: 18, minStock: 6, image: 'https://images.unsplash.com/photo-1635773054018-22c38853bd8e?auto=format&fit=crop&w=600&q=80' },
-            { id: 'PRD-102', sku: 'PRD-102', name: 'Kit Transmissão Aço 1045 c/ Retentor', category: 'Transmissão', priceDemo: 219.90, stockQty: 7, minStock: 3, image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80' },
-            { id: 'PRD-103', sku: 'PRD-103', name: 'Pastilhas de Freio Cerâmica', category: 'Freios', priceDemo: 65.00, stockQty: 4, minStock: 5, image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80' }
-        ];
+        let cart = [];
+        let currentFilter = 'todos';
 
-        let BOOKINGS_DATA = [];
-        let CLIENTS_DATA = [];
-        let OS_DATA = [];
-        let CASHIER_DATA = [];
-        let currentCategory = 'Todos';
-        let currentErpModule = 'dashboard';
-        let cartItems = [];
-
-        const ERP_MODULES = [
-            { id: 'dashboard', name: 'Dashboard', icon: 'fa-gauge-high' },
-            { id: 'pedidos', name: 'Agendamentos & Pedidos', icon: 'fa-bell-concierge' },
-            { id: 'clientes', name: 'Clientes & Placas', icon: 'fa-users' },
-            { id: 'os', name: 'Ordens de Serviço (O.S.)', icon: 'fa-file-invoice-dollar' },
-            { id: 'estoque', name: 'Estoque & Produtos', icon: 'fa-boxes-stacked' },
-            { id: 'caixa', name: 'Caixa & Financeiro', icon: 'fa-cash-register' },
-            { id: 'seguranca-nr5', name: 'Mapa de Risco (NR-5)', icon: 'fa-triangle-exclamation' }
-        ];
-
-        function showToast(title, msg) {
-            const t = document.getElementById('wm-toast');
-            document.getElementById('wm-toast-title').textContent = title;
-            document.getElementById('wm-toast-msg').textContent = msg;
-            t.classList.remove('hidden');
-            setTimeout(() => t.classList.add('hidden'), 4000);
+        function formatBRL(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        function renderServices() {
-            const grid = document.getElementById('services-grid');
-            if (!grid) return;
-            grid.innerHTML = SERVICES_DATA.map(s => `
-                <div class="p-6 rounded-lg bg-wm-card border border-wm-border hover:border-wm-red transition flex flex-col justify-between">
+        function renderCatalog() {
+            const grid = document.getElementById('catalogGrid');
+            const filtered = currentFilter === 'todos' 
+                ? catalogItems 
+                : catalogItems.filter(item => item.category === currentFilter);
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="p-4 rounded-xl bg-neutral-900/80 border border-neutral-800 flex flex-col justify-between hover:border-neutral-700 transition">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded bg-wm-red/10 border border-wm-red/30 text-wm-red flex items-center justify-center text-xl">
-                                <i class="fa-solid ${s.icon}"></i>
-                            </div>
-                            <span class="px-2.5 py-1 rounded bg-wm-black text-[10px] font-bold uppercase text-gray-300">${s.badge}</span>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-600/15 text-red-400 border border-red-500/20">
+                                ${item.tag}
+                            </span>
+                            <span class="text-xs text-neutral-500 uppercase font-semibold">${item.category === 'pecas' ? 'Peça' : 'Serviço'}</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">${s.title}</h3>
-                        <p class="text-xs text-wm-gray leading-relaxed mb-5">${s.description}</p>
+                        <h4 class="text-white font-bold text-sm leading-snug">${item.name}</h4>
                     </div>
-                    <div class="space-y-2 pt-3 border-t border-wm-border">
-                        <button onclick="selectServiceAndScroll('${s.title}')" class="w-full py-2.5 rounded bg-wm-red text-white text-xs font-bold uppercase">Agendar</button>
-                        <button onclick="requestServiceViaWhatsApp('${s.title}')" class="w-full py-2 rounded bg-emerald-600 text-white text-xs font-bold uppercase"><i class="fa-brands fa-whatsapp"></i> WhatsApp Oficiais</button>
+                    <div class="mt-4 pt-3 border-t border-neutral-800/80 flex items-center justify-between">
+                        <span class="text-base font-extrabold text-emerald-400">${formatBRL(item.price)}</span>
+                        <button onclick="addToCart(${item.id})" class="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95">
+                            <i class="fa-solid fa-plus text-[10px]"></i>
+                            <span>Adicionar</span>
+                        </button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            if (!grid) return;
-            const query = (document.getElementById('product-search')?.value || '').toLowerCase();
-            const list = PRODUCTS_DATA.filter(p => (currentCategory === 'Todos' || p.category === currentCategory) && (!query || p.name.toLowerCase().includes(query)));
-
-            grid.innerHTML = list.map(p => `
-                <div class="rounded-lg bg-wm-card border border-wm-border overflow-hidden flex flex-col justify-between">
-                    <div class="h-40 bg-wm-black relative">
-                        <img src="${p.image}" class="w-full h-full object-cover" alt="${p.name}">
-                        <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 text-[10px] text-wm-red font-mono font-bold">${p.sku}</span>
-                    </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="text-sm font-bold text-white">${p.name}</h3>
-                        <p class="text-[11px] text-emerald-400 font-semibold">Estoque: ${p.stockQty} un.</p>
-                        <div class="flex justify-between items-center pt-2">
-                            <span class="font-display text-2xl font-bold text-white">R$ ${p.priceDemo.toFixed(2).replace('.', ',')}</span>
-                            <button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded bg-zinc-800 hover:bg-wm-red text-white text-[11px] font-bold">Cotar</button>
-                        </div>
-                    </div>
-                    <div class="p-4 pt-0">
-                        <button onclick="openWhatsAppModal('Olá! Gostaria de consultar o produto ${p.name} (${p.sku}).')" class="w-full py-2 rounded bg-emerald-600 text-white text-xs font-bold uppercase"><i class="fa-brands fa-whatsapp"></i> WhatsApp Oficiais</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function setProductCategory(cat) {
-            currentCategory = cat;
-            renderProducts();
-        }
-
-        function filterProducts() {
-            renderProducts();
-        }
-
-        function selectServiceAndScroll(name) {
-            document.getElementById('service-type').value = name;
-            document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function requestServiceViaWhatsApp(serviceName) {
-            openWhatsAppModal(`Olá WM MOTOS! Gostaria de solicitar o serviço: *${serviceName}*.`);
-        }
-
-        function switchMode(mode) {
-            const pub = document.getElementById('public-view');
-            const erp = document.getElementById('erp-view');
-            if (mode === 'erp') {
-                pub.classList.add('hidden');
-                erp.classList.remove('hidden');
-                renderErpSidebar();
-                renderErpModuleContent();
-            } else {
-                erp.classList.add('hidden');
-                pub.classList.remove('hidden');
-            }
-        }
-
-        function toggleViewMode() {
-            const erp = document.getElementById('erp-view');
-            switchMode(erp.classList.contains('hidden') ? 'erp' : 'public');
-        }
-
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        function closeMobileMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }
-
-        function maskPhone(input) {
-            let v = input.value.replace(/\D/g, '');
-            if (v.length > 11) v = v.slice(0, 11);
-            if (v.length > 6) input.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-            else if (v.length > 2) input.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
-        }
-
-        function handleBookingSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('client-name').value.trim();
-            const phone = document.getElementById('client-phone').value.trim();
-            const bike = document.getElementById('bike-model').value.trim();
-            const service = document.getElementById('service-type').value.trim();
-            const date = document.getElementById('preferred-date').value.trim();
-            const recipientKey = document.querySelector('input[name="booking-recipient"]:checked')?.value || 'regivaldo';
-
-            if (!name || !phone || !bike || !service || !date) {
-                showToast('Preencha os campos', 'Todos os campos obrigatórios devem ser preenchidos.', true);
-                return;
-            }
-
-            const payload = {
-                id: `AGD-${Date.now().toString().slice(-5)}`,
-                clientName: name,
-                clientPhone: phone,
-                bikeModel: bike,
-                service: service,
-                preferredDate: date.split('-').reverse().join('/'),
-                recipientKey: recipientKey,
-                status: 'PENDENTE',
-                createdAt: Date.now()
-            };
-
-            BOOKINGS_DATA.unshift(payload);
-
-            const msg = encodeURIComponent(`Olá WM MOTOS! Solicitação de Agendamento:\n- Cliente: ${name} (${phone})\n- Moto: ${bike}\n- Serviço: ${service}\n- Data: ${payload.preferredDate}`);
-            const targetPhone = WHATSAPP_NUMBERS[recipientKey] || WHATSAPP_NUMBERS.regivaldo;
-            const waUrl = `https://wa.me/${targetPhone}?text=${msg}`;
-
-            document.getElementById('booking-summary-box').innerHTML = `Cliente: ${name}<br>Moto: ${bike}<br>Serviço: ${service}<br>Data: ${payload.preferredDate}`;
-            document.getElementById('booking-feedback').classList.remove('hidden');
-
-            window.open(waUrl, '_blank');
-            showToast('Agendamento Salvo!', 'Encaminhado ao WhatsApp do responsável.');
-        }
-
-        function submitBookingToRecipient(recipientKey) {
-            document.querySelector(`input[name="booking-recipient"][value="${recipientKey}"]`).checked = true;
-            handleBookingSubmit({ preventDefault: () => {} });
-        }
-
-        function resetBookingForm() {
-            document.getElementById('booking-form').reset();
-            document.getElementById('booking-feedback').classList.add('hidden');
-        }
-
-        function openWhatsAppModal(msg) {
-            document.getElementById('wa-modal-message').value = msg;
-            const enc = encodeURIComponent(msg);
-            document.getElementById('wa-link-regivaldo').href = `https://wa.me/${WHATSAPP_NUMBERS.regivaldo}?text=${enc}`;
-            document.getElementById('wa-link-auxiliar').href = `https://wa.me/${WHATSAPP_NUMBERS.auxiliar}?text=${enc}`;
-            document.getElementById('whatsapp-modal').classList.remove('hidden');
-        }
-
-        function closeWhatsAppModal() {
-            document.getElementById('whatsapp-modal').classList.add('hidden');
-        }
-
-        function openCartModal() {
-            showToast('Lista de Cotação', `${cartItems.length} item(ns) na lista de cotação.`);
+        function filterProducts(cat) {
+            currentFilter = cat;
+            ['todos', 'pecas', 'servicos'].forEach(tab => {
+                const btn = document.getElementById('tab-' + tab);
+                if (tab === cat) {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white transition";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800 transition";
+                }
+            });
+            renderCatalog();
         }
 
         function addToCart(id) {
-            const p = PRODUCTS_DATA.find(x => x.id === id);
-            if (p) cartItems.push(p);
-            showToast('Adicionado', `${p.name} adicionado à lista.`);
+            const product = catalogItems.find(p => p.id === id);
+            if (!product) return;
+            cart.push(product);
+            updateCartUI();
         }
 
-        // ERP LOGIC
-        function selectErpModule(id) {
-            currentErpModule = id;
-            renderErpSidebar();
-            renderErpModuleContent();
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
         }
 
-        function renderErpSidebar() {
-            const nav = document.getElementById('erp-sidebar-nav');
-            if (!nav) return;
-            nav.innerHTML = ERP_MODULES.map(m => `
-                <button onclick="selectErpModule('${m.id}')" class="w-full text-left px-3 py-2.5 rounded text-xs font-bold transition flex items-center gap-2.5 ${m.id === currentErpModule ? 'bg-wm-red text-white' : 'bg-wm-black text-gray-300 border border-wm-border'}">
-                    <i class="fa-solid ${m.icon} w-4 text-center"></i> ${m.name}
-                </button>
-            `).join('');
-        }
+        function updateCartUI() {
+            document.getElementById('cartCountBadge').textContent = cart.length;
+            const container = document.getElementById('cartItemsContainer');
+            const totalEl = document.getElementById('cartTotalValue');
 
-        function renderErpModuleContent() {
-            const container = document.getElementById('erp-module-content');
-            if (!container) return;
-
-            if (currentErpModule === 'dashboard') {
-                container.innerHTML = `
-                    <div>
-                        <h2 class="font-display text-3xl font-bold uppercase text-white mb-4">Dashboard Executivo WM MOTOS</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-6">
-                            <div class="p-4 rounded bg-wm-black border border-wm-border">
-                                <span class="text-xs text-wm-gray uppercase">Agendamentos Site</span>
-                                <p class="text-3xl font-bold text-wm-red mt-1">${BOOKINGS_DATA.length}</p>
-                            </div>
-                            <div class="p-4 rounded bg-wm-black border border-wm-border">
-                                <span class="text-xs text-wm-gray uppercase">Clientes Cadastrados</span>
-                                <p class="text-3xl font-bold text-white mt-1">${CLIENTS_DATA.length}</p>
-                            </div>
-                            <div class="p-4 rounded bg-wm-black border border-wm-border">
-                                <span class="text-xs text-wm-gray uppercase">Ordens de Serviço</span>
-                                <p class="text-3xl font-bold text-white mt-1">${OS_DATA.length}</p>
-                            </div>
-                            <div class="p-4 rounded bg-wm-black border border-wm-border">
-                                <span class="text-xs text-wm-gray uppercase">Segurança NR-5</span>
-                                <p class="text-3xl font-bold text-emerald-400 mt-1">Ativa</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if (currentErpModule === 'pedidos') {
-                container.innerHTML = `
-                    <div>
-                        <h2 class="font-display text-3xl font-bold uppercase text-white mb-4">Agendamentos & Pedidos Recebidos</h2>
-                        <div class="space-y-3">
-                            ${BOOKINGS_DATA.length === 0 ? '<p class="text-xs text-wm-gray">Nenhum agendamento recebido até o momento.</p>' : BOOKINGS_DATA.map(b => `
-                                <div class="p-4 rounded bg-wm-black border border-wm-border text-xs space-y-1">
-                                    <div class="flex justify-between font-bold text-white"><span class="text-wm-red">${b.id}</span><span>${b.clientName} (${b.clientPhone})</span></div>
-                                    <p>Moto: ${b.bikeModel} | Serviço: ${b.service} | Data: ${b.preferredDate}</p>
-                                    <p class="text-emerald-400">Destinatário: WhatsApp do ${b.recipientKey === 'regivaldo' ? 'Regivaldo' : 'Auxiliar'}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            } else if (currentErpModule === 'clientes') {
-                container.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="font-display text-3xl font-bold uppercase text-white">Clientes & Placas</h2>
-                            <button onclick="addDemoClient()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Novo Cliente</button>
-                        </div>
-                        <div class="space-y-2">
-                            ${CLIENTS_DATA.length === 0 ? '<p class="text-xs text-wm-gray">Nenhum cliente cadastrado ainda.</p>' : CLIENTS_DATA.map(c => `
-                                <div class="p-3 rounded bg-wm-black border border-wm-border flex justify-between items-center text-xs">
-                                    <div><strong class="text-wm-red">${c.name}</strong> — Moto: ${c.bike} (Placa: <span class="text-amber-400">${c.plate}</span>)</div>
-                                    <span class="text-gray-300">${c.phone}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            } else if (currentErpModule === 'os') {
-                container.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="font-display text-3xl font-bold uppercase text-white">Ordens de Serviço (O.S.)</h2>
-                            <button onclick="addDemoOS()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Abrir O.S.</button>
-                        </div>
-                        <div class="space-y-2">
-                            ${OS_DATA.length === 0 ? '<p class="text-xs text-wm-gray">Nenhuma Ordem de Serviço aberta.</p>' : OS_DATA.map(o => `
-                                <div class="p-3 rounded bg-wm-black border border-wm-border flex justify-between items-center text-xs">
-                                    <div><strong class="text-wm-red">${o.id}</strong> — ${o.client} (${o.bike})</div>
-                                    <span class="text-emerald-400 font-bold">R$ ${o.total.toFixed(2)} (${o.status})</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            } else if (currentErpModule === 'estoque') {
-                container.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="font-display text-3xl font-bold uppercase text-white">Estoque & Produtos</h2>
-                            <button onclick="addDemoStock()" class="px-3 py-2 rounded bg-wm-red text-white text-xs font-bold uppercase">+ Nova Peça</button>
-                        </div>
-                        <div class="space-y-2">
-                            ${PRODUCTS_DATA.map(p => `
-                                <div class="p-3 rounded bg-wm-black border border-wm-border flex justify-between items-center text-xs">
-                                    <div><strong class="text-wm-red">${p.sku}</strong> — ${p.name}</div>
-                                    <div class="flex items-center gap-4">
-                                        <span class="text-emerald-400 font-bold">Estoque: ${p.stockQty} un.</span>
-                                        <span class="font-bold text-white">R$ ${p.priceDemo.toFixed(2).replace('.', ',')}</span>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            } else if (currentErpModule === 'caixa') {
-                container.innerHTML = `
-                    <div>
-                        <h2 class="font-display text-3xl font-bold uppercase text-white mb-4">Caixa & Financeiro</h2>
-                        <p class="text-xs text-wm-gray">Módulo de fluxo de caixa em tempo real conectado às Ordens de Serviço.</p>
-                    </div>
-                `;
-            } else if (currentErpModule === 'seguranca-nr5') {
-                container.innerHTML = `
-                    <div>
-                        <h2 class="font-display text-3xl font-bold uppercase text-white mb-4"><i class="fa-solid fa-triangle-exclamation text-amber-400"></i> Mapa de Risco & Segurança (NR-5)</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                            <div class="p-4 rounded bg-wm-black border border-amber-500/40 space-y-2">
-                                <h3 class="font-bold text-amber-400 uppercase">1. EPI Obrigatório</h3>
-                                <p class="text-gray-300">Calçado fechado (proibido chinelo), óculos e protetor auricular para esmeril e lixadeira.</p>
-                            </div>
-                            <div class="p-4 rounded bg-wm-black border border-wm-red/40 space-y-2">
-                                <h3 class="font-bold text-wm-red uppercase">2. Alto Risco (Combustível)</h3>
-                                <p class="text-gray-300">Tanques de gasolina longe de tomadas e benjamins. Extintor de incêndio sempre desobstruído.</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `<h2 class="font-display text-2xl font-bold uppercase text-white">Módulo ${currentErpModule} em operação</h2>`;
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-neutral-500 text-xs text-center py-6">Nenhum item adicionado ao orçamento ainda.</p>`;
+                totalEl.textContent = "R$ 0,00";
+                return;
             }
+
+            let total = 0;
+            container.innerHTML = cart.map((item, idx) => {
+                total += item.price;
+                return `
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs">
+                        <div>
+                            <p class="text-white font-semibold">${item.name}</p>
+                            <p class="text-emerald-400 font-bold">${formatBRL(item.price)}</p>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" class="text-neutral-500 hover:text-red-500 p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.textContent = formatBRL(total);
         }
 
-        function addDemoClient() {
-            CLIENTS_DATA.push({ id: Date.now(), name: 'Cliente Exemplo', phone: '(94) 99999-9999', bike: 'Honda CG 160', plate: 'ABC-1234' });
-            renderErpModuleContent();
-            showToast('Cliente', 'Cliente adicionado ao banco.');
+        function sendCartToWhatsapp() {
+            const itemsList = cart.length > 0 
+                ? cart.map(i => `• ${i.name} (${formatBRL(i.price)})`).join('%0A')
+                : 'Gostaria de solicitar um orçamento na oficina.';
+            const message = `Olá WM Motos! Vim pelo site oficial (Av. Ananias Costa, nº 200, Centro) e gostaria de atendimento:%0A%0A${itemsList}`;
+            window.open(`https://wa.me/5594984164948?text=${message}`, '_blank');
         }
 
-        function addDemoOS() {
-            OS_DATA.push({ id: `OS-${Date.now().toString().slice(-4)}`, client: 'Cliente Exemplo', bike: 'Honda CG 160', total: 150.00, status: 'Aberta' });
-            renderErpModuleContent();
-            showToast('O.S.', 'Ordem de serviço aberta.');
+        function copyMapLink() {
+            const textToCopy = `${FULL_ADDRESS} - Localização: ${GOOGLE_MAPS_URL}`;
+            const tempInput = document.createElement("textarea");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const copyTextEl = document.getElementById("copyBtnText");
+            copyTextEl.textContent = "Endereço e Link Copiados!";
+            setTimeout(() => {
+                copyTextEl.textContent = "Copiar Endereço / Link";
+            }, 2500);
         }
 
-        function addDemoStock() {
-            PRODUCTS_DATA.push({ id: `PRD-${Date.now()}`, sku: 'PRD-NEW', name: 'Vela de Ignição Iridium', category: 'Elétrica', priceDemo: 85.00, stockQty: 10, minStock: 2, image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80' });
-            renderProducts();
-            renderErpModuleContent();
-            showToast('Estoque', 'Peça cadastrada no estoque.');
+        function openWhatsappSelector() {
+            document.getElementById('whatsappModal').classList.remove('hidden');
         }
 
-        // Tour
-        let tourStep = 0;
-        const tourSteps = [
-            { title: 'Bem-vindo à WM MOTOS', desc: 'Conheça nossa oficina e estrutura técnica.' },
-            { title: 'Mapa de Risco & Segurança (NR-5)', desc: 'Veja a seção de segurança com EPIs, ergonomia e prevenção de riscos.' },
-            { title: 'Agendamento e WhatsApp', desc: 'Envie sua solicitação direto para o WhatsApp do Regivaldo ou do Auxiliar.' }
-        ];
-
-        function openSiteTour(idx) {
-            tourStep = idx;
-            updateTourModal();
-            document.getElementById('site-tour-modal').classList.remove('hidden');
+        function closeWhatsappSelector() {
+            document.getElementById('whatsappModal').classList.add('hidden');
         }
 
-        function closeSiteTour() {
-            document.getElementById('site-tour-modal').classList.add('hidden');
+        function toggleCartModal() {
+            document.getElementById('cartModal').classList.toggle('hidden');
         }
 
-        function updateTourModal() {
-            const s = tourSteps[tourStep];
-            document.getElementById('tour-step-title').textContent = s.title;
-            document.getElementById('tour-step-desc').textContent = s.desc;
+        function toggleErpModal() {
+            document.getElementById('erpModal').classList.toggle('hidden');
         }
 
-        function nextTourStep() {
-            if (tourStep < tourSteps.length - 1) { tourStep++; updateTourModal(); } else closeSiteTour();
-        }
-
-        function prevTourStep() {
-            if (tourStep > 0) { tourStep--; updateTourModal(); }
-        }
-
-        window.onload = function() {
-            renderServices();
-            renderProducts();
-            const d = document.getElementById('preferred-date');
-            if (d) d.min = new Date().toISOString().split('T')[0];
-            // Abre o guia automaticamente na primeira visita
-            setTimeout(() => openSiteTour(0), 1000);
+        window.onload = function () {
+            renderCatalog();
+            updateCartUI();
         };
     </script>
 </body>
